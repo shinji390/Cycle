@@ -1,0 +1,68 @@
+.container
+  - breadcrumb :mypage,@user
+  .row
+    .col-lg-5.text-center
+      = @user.avatar.present? ? image_tag(@user.avatar.url, class: 'rounded-circle') : gravatar_for(@user, 120)
+      p.user_name = @user.name
+
+      .profile_btn.my-4
+        = link_to 'プロフィールを編集する', edit_user_registration_path(@user), class: 'btn btn-info'
+
+    .col-lg-7.text-center
+      .user_content
+        - if current_user == @user
+          p
+            | 投稿数
+            br
+            span.number_count = @user.posts.count
+          p
+            | お気に入り
+            br
+            span.number_count 0
+          p.post_icon = link_to new_post_path, class: 'new_post btn btn-outline-light text-center rounded-circle',
+          :data => { :toggle=>'tooltip', :title=>'投稿する' }, method: :get do
+            i.fa.fa-pencil
+        - else
+          p
+            | 投稿数
+            br
+            span.number_count = @user.posts.count
+          p
+            | お気に入り
+            br
+            span.number_count 0
+
+      hr
+
+      .card.text-white.bg-secondary.mb-3
+        .card-header
+          | 自己紹介
+          i.fa.fa-address-card-o
+        .card-body.bg-light
+          p.card-text = @user.profile.present? ? @user.profile : '未設定です'
+
+  hr
+.container-fluid.user_post
+  .row
+    - @user.posts.each do |post|
+      .col-lg-4.col-sm-6.portfolio-item.text-center.mb-4
+        .card.h-100
+          = render 'shared/thumbnail', post: post
+          .card-body
+            h4.card-title = post.title
+
+            p.card-text
+              |
+              == yotube_url_delete(post)
+              -if post.melody.present?
+                p = audio_tag(post.melody.url, :controls => true)
+
+            - if @user == current_user
+              = render 'shared/btn_group', post: post
+
+            - else
+              .show_btn
+                = link_to 'Show', posts_path(post.user), class: 'btn btn-outline-info my-1'
+
+          .card-footer.text-white.likes
+            = simple_time(post.created_at)

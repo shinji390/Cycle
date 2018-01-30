@@ -1,0 +1,18 @@
+doctype html
+html [lang="ja"]
+  head
+    title = page_title(yield(:title))
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    / = favicon_link_tag()
+
+  body [id="#{controller.controller_name}"]
+    div [class="#{action_name}-wrapper" id="page-top"]
+      = render 'layouts/header'
+      = render 'shared/flash'
+      .container
+        == breadcrumbs separator: "&nbsp;/&nbsp;", style: :bootstrap
+        = yield
+
+      = render 'layouts/footer'

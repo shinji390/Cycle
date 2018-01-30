@@ -1,0 +1,15 @@
+{
+  "name": "Cycle",
+  "private": true,
+  "dependencies": {
+    "bootswatch": "^4.0.0-beta.3",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "jquery-easing": "^0.0.1",
+    "popper.js": "^1.12.9"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Junki Yamada <fogg.smiths@gmail.com>",
+  "license": "MIT"
+}

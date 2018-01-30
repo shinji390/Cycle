@@ -1,0 +1,37 @@
+= render 'shared/errors'
+.form-group
+  = form_with(model: @post, local:true) do |f|
+    p.check_icon
+      | 投稿する曲
+    ul#pills-tab.nav.nav-pills.mb-3 role="tablist"
+      li.nav-item
+        a#pills-home-tab.nav-link.active aria-controls="pills-home" aria-selected="true" data-toggle="pill" href="#pills-home" role="tab" 音楽ファイルの投稿
+      li.nav-item
+        a#pills-profile-tab.nav-link aria-controls="pills-profile" aria-selected="false" data-toggle="pill" href="#pills-profile" role="tab" 動画ファイルの投稿
+      li.nav-item
+        a#pills-profile-tab.nav-link aria-controls="pills-url" aria-selected="false" data-toggle="pill" href="#pills-url" role="tab" youtubeの動画を投稿する
+
+    #pills-tabContent.tab-content
+      #pills-home.tab-pane.fade.show.active aria-labelledby="pills-home-tab" role="tabpanel"
+        |
+        = f.label :melody, '音声ファイルを投稿する(mp3,wav)', class: 'mb-2'
+        = f.file_field :melody, class: 'form-control-file'
+      #pills-profile.tab-pane.fade aria-labelledby="pills-profile-tab" role="tabpanel"
+        |
+        = f.label :video, '動画ファイルを投稿する(mp4,MOV,wmv)', class: 'mb-2'
+        = f.file_field :video, class: 'form-control-file'
+
+      #pills-url.tab-pane.fade aria-labelledby="pills-url-tab" role="tabpanel"
+        |
+        = f.label :url, 'youtubeの動画を投稿する(url)', class: 'mb-2'
+        = f.text_field :url, class: 'form-control'
+
+    = f.label :title, 'タイトル', class: 'mt-4 check_icon'
+    = f.text_field :title, class: 'form-control'
+
+    = f.label :content, '本文or歌詞', class: 'check_icon'
+    = f.text_area :content, class: 'form-control mb-4'
+
+    .new_post_btn.text-center
+      = f.submit '投稿する', class: 'btn btn-info w-100 my-4'
+      = link_to '戻る', :back, class: 'btn btn-outline-secondary w-100'

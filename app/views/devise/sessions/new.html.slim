@@ -1,0 +1,36 @@
+header.masthead
+  .container.main-wrapper
+    .row.justify-content-center.contents
+      .col-lg-7
+        .intro-text
+          .intro-lead Cycle
+          h4.intro-lead-text.text-white
+            | サンプルサンプルサンプルサンプル
+          p サンプルサンプルサンプルサンプルサンプルサンプルサンプル
+
+      .col-lg-5.col-md-9.form-content
+        h3.subtitle
+          | Log in
+          i.fa.fa-sign-in.ml-1
+        = render 'devise/shared/flash'
+
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group
+            = f.label :email
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス'
+
+            = f.label :password
+            = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'パスワード'
+
+          - if devise_mapping.rememberable?
+            = f.check_box :remember_me
+            = f.label :remember_me, 'パスワードを記憶する', class: 'ml-2'
+
+          .actions
+            = f.submit "ログイン", class: 'btn btn-primary w-100'
+
+        = render "devise/shared/links"
+
+
+= render 'layouts/top_page/service'
+= render 'layouts/top_page/contact'

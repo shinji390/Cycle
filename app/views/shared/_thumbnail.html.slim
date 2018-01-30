@@ -1,0 +1,13 @@
+.img_link
+  - if post.url.present?
+    .embed-responsive.embed-responsive-4by3
+      = youtube(post)
+  - elsif post.video.present?
+    .embed-responsive.embed-responsive-16by9.video_wrap
+      = video_tag(post.video_url,:controls => true,
+        class: 'embed-responsive-item card-img-top')
+      / = image_tag(post.video_url(:screenshot), id: "video", :alt => "screenshot")
+  - elsif post.melody.present?
+    = image_tag('sample3.jpg', class: 'card-img-top')
+  - else
+    = image_tag('sample4.jpg', class: 'card-img-top')

@@ -1,0 +1,53 @@
+.jumbotron {
+  background: linear-gradient( 120deg, rgba(#13b266, .72), rgba(#26b8d0, .72), rgba(#326bb9, .72), rgba(#c147b7, .72), rgba(#ce3d68, .72)) fixed;
+  background-size: 500%;
+  // Animation
+  -webkit-animation: bg-gradient 15s ease infinite;
+  -moz-animation: bg-gradient 15s ease infinite;
+  -o-animation: bg-gradient 15s ease infinite;
+  animation: bg-gradient 15s ease infinite;
+  @-webkit-keyframes bg-gradient {
+      0% {
+        background-position: 14% 0;
+      }
+      50% {
+        background-position: 87% 100%;
+      }
+      100% {
+        background-position: 14% 0;
+      }
+    }
+    @-moz-keyframes bg-gradient {
+      0% {
+        background-position: 14% 0;
+      }
+      50% {
+        background-position: 87% 100%;
+      }
+      100% {
+        background-position: 14% 0;
+      }
+    }
+    @-o-keyframes bg-gradient {
+      0% {
+        background-position: 14% 0;
+      }
+      50% {
+        background-position: 87% 100%;
+      }
+      100% {
+        background-position: 14% 0;
+      }
+    }
+    @keyframes bg-gradient {
+      0% {
+        background-position: 14% 0;
+      }
+      50% {
+        background-position: 87% 100%;
+      }
+      100% {
+        background-position: 14% 0;
+      }
+    }
+}

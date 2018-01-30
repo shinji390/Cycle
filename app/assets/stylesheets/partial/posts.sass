@@ -1,0 +1,52 @@
+#posts
+  .top_container
+    margin-top: 3rem
+    margin-bottom: 3rem
+    .music_icon
+      &::after
+        content: "\f001"
+        font-family: FontAwesome
+        margin-right: 0.25rem
+
+  .check_icon
+    &::before
+      content: "\f138"
+      font-family: FontAwesome
+      margin-right: 0.25rem
+      color: rgb(28, 209, 160)
+    .text-white
+      margin: 0 0 0 1rem
+      align-self: center
+
+  .all_posts
+    max-width: 1300px
+
+  .top-image-wrap
+    background: url("sample.jpg")
+    background-size: cover
+    background-position: center 60%
+    @import "module/gb"
+
+  .card
+    border: 2px solid #fff
+    .card-footer
+      border: 1px solid rgba(0, 0, 0, 0.125)
+
+  .card-header
+    display: flex
+    .user_name
+      align-self: center
+      margin: 0 0 0 1rem
+
+  .new-wrapper
+    textarea
+      height: 450px
+
+    .nav-pills
+      background: rgba(0, 0, 0, 0.06)
+      padding: 1rem
+    .form-group
+      .nav
+        justify-content: center
+      .check_icon
+        font-size: 17px

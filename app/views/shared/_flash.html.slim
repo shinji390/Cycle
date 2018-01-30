@@ -1,0 +1,12 @@
+- if notice
+  .alert.alert-success.alert-dismissible.fade.show#set_time role="alert"
+    |
+    = notice
+    button.close aria-label="閉じる" data-dismiss="alert" type="button"
+      span aria-hidden="true"  &times;
+- elsif alert
+  .alert.alert-success.alert-dismissible.fade.show#set_time role="alert"
+    |
+    = alert
+    button.close aria-label="閉じる" data-dismiss="alert" type="button"
+      span aria-hidden="true"  &times;

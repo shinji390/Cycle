@@ -1,0 +1,6 @@
+.text-center
+  = link_to 'VIEW', posts_path(post.id),class:'btn btn-sm btn-outline-info mr-1'
+  = link_to 'EDIT', edit_post_path(post.id) ,class:'btn btn-sm btn-outline-warning mr-1'
+  = link_to 'DELETE' ,post_path(post.id), class:'btn btn-sm btn-outline-danger',
+  data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
+  title: "削除の確認", method: :delete

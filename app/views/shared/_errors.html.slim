@@ -1,0 +1,8 @@
+- if @post.errors.any?
+  #error_explanation.alert.alert-danger
+    h4.alert-heading
+      = pluralize(@post.errors.count, "件のエラーがあります")
+    hr
+    ul
+      - @post.errors.full_messages.each do |msg|
+        li = msg

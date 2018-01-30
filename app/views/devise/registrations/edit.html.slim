@@ -1,0 +1,67 @@
+- breadcrumb :edit_profile, @user
+  / = resource_name.to_s.humanize
+
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class:'row'}) do |f|
+  = devise_error_messages
+  .form-group.col-lg-7
+
+    .field
+      = f.label :name, 'ユーザー名'
+      = f.text_field :name, class: 'form-control'
+
+    .field
+      = f.label :email
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+
+    .field
+      = f.label :profile
+      = f.text_area :profile, class: 'form-control', placeholder: '80文字以内'
+
+    .field
+      = current_user.avatar.present? ? image_tag(current_user.avatar.url, class: 'rounded-circle') : gravatar_for(current_user, 100)
+      = f.label :avatar, 'プロフィール画像', class: 'ml-2'
+      = f.file_field :avatar, autocomplete: "off", class: 'form-control-file mt-3'
+      = f.hidden_field :avatar_cache
+
+    / - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    /   div
+    /     | Currently waiting confirmation for:
+    /     = resource.unconfirmed_email
+
+  .form-group.col-lg-5
+
+    .field
+      = f.label :password, 'パスワード変更'
+      i
+        | (変更しない場合は空欄のまま)
+      = f.password_field :password, autocomplete: "off", class: 'form-control'
+      - if @minimum_password_length
+        em
+          = @minimum_password_length
+          |  文字以上
+
+    .field
+      = f.label :password_confirmation, "パスワード変更確認"
+      = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+
+    / - if false
+    /   .field
+    /     = f.label :current_password
+    /     i
+    /       | (we need your current password to confirm your changes)
+    /     = f.password_field :current_password, autocomplete: "off", class: 'form-control'
+
+    .actions
+      = f.submit "プロフィール更新", class: 'btn btn-info w-100'
+      = link_to "戻る", :back, class: 'btn btn-outline-secondary w-100 mt-2'
+hr
+.delete_account
+  .title-wrap.text-right
+    h4
+      | アカウントの削除
+  .row.justify-content-end
+
+    .col-lg-6.text-right
+        = button_to "アカウントを削除する", registration_path(resource_name),
+        data: { confirm: "本当にアカウントを削除してよろしいですか?", cancel: "やめる", commit: "削除する"},
+        class: 'btn btn-danger', title: '削除の確認' ,method: :delete
