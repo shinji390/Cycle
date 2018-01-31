@@ -5,8 +5,8 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
     i.fa.fa-bars.ml-1
   #navbarNavDropdown.collapse.navbar-collapse
     ul.navbar-nav.ml-auto
-      li.nav-item.current-item
-        a.nav-link href="#{user_signed_in? ? '/posts' : '/users/sign_in'}"
+      li.nav-item
+        = link_to user_signed_in? ? posts_path : new_user_session_path, class: "nav-link #{current_page(request.path)}" do
           i.fa.fa-home.mr-1
           | ホーム
           span.sr-only (現位置)
@@ -16,12 +16,13 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
         /     i.fa.fa-headphones.mr-1
         /     | 投稿
         li.nav-item
-          = link_to user_path(current_user), class: 'nav-link', method: :get do
+          = link_to user_path(current_user), class: "nav-link #{'current' if current_page?(current_user)}",
+          method: :get do
             i.fa.fa-user-o
             | マイページ
 
-        li.nav-item.dropdown
-          a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href=""
+        li.nav-item.dropdown[class="#{'current' if request.path == edit_user_registration_path(current_user)}"]
+          a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="##"
             i.fa.fa-cog.mr-1
             | アカウント
             i.fa.fa-caret-down.ml-1

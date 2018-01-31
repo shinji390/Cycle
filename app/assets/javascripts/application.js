@@ -14,6 +14,7 @@
 //= require popper.js/dist/umd/popper.min.js
 //= require rails-ujs
 //= require bootstrap/dist/js/bootstrap.js
+//= require infinite-scroll/dist/infinite-scroll.pkgd.js
 //= require data-confirm-modal
 // = require jquery-easing/dist/jquery.easing.1.3.umd.min.js
 //= require_tree .

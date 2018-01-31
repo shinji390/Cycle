@@ -53,4 +53,13 @@ module ApplicationHelper
     end
   end
 
+  # current_page
+  def current_page(url)
+    if url == '/'
+      return 'current'
+    elsif url == '/posts'
+      return 'current'
+    end
+  end
+
 end

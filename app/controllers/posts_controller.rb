@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   PER = 6
 
   def index
-    @posts = Post.all.page(params[:page]).per(PER)
+    @posts = Post.order(:created_at).page(params[:page]).per(PER)
   end
 
   def new

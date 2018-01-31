@@ -4,6 +4,9 @@ html
   margin-bottom: 0
 audio
   max-width: 100%
+.pagination
+  margin-top: 1.5rem
+  justify-content: center
 #users,#registrations,#posts,#passwords
   @import "module/font"
   .card-footer
@@ -14,7 +17,7 @@ audio
   position: relative
   padding-bottom: 320px
   padding-top: 64px
-  background: #fafafa
+  background: #fff
 
   .btn-lg
     padding: 1.75rem
@@ -98,12 +101,13 @@ audio
   // #mainNav
   //   position: relative
 
+  .navbar
+    padding: 0.9rem
   #mainNav
     -webkit-transition: padding-top 0.3s, padding-bottom 0.3s
     -moz-transition: padding-top 0.3s, padding-bottom 0.3s
     transition: padding-top 0.3s, padding-bottom 0.3s
     .navbar-brand
-      font-size: 1.75em
       -webkit-transition: all 0.3s
       -moz-transition: all 0.3s
       transition: all 0.3s
@@ -148,7 +152,7 @@ audio
   .navbar-dark .navbar-nav .nav-link:hover, #navbarNavDropdown .account:hover
     color: #fed136
   .navbar-nav .nav-link
-    color: #ffffffeb
+    color: rgb(240, 240, 240)
   .navbar-toggler
     font-size: 12px
     right: 0
@@ -165,3 +169,9 @@ audio
     padding-top: 0
     padding-bottom: 0
     background-color: #343a40
+
+
+  .current
+    .dropdown-toggle
+      color: #fed136 !important
+    color: #fed136 !important
