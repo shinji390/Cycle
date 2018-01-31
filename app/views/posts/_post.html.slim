@@ -1,33 +1,36 @@
-.card.text-center.mb-4
-  .card-header
-    = link_to user_path(post.user), class: 'avatar', :data => { :toggle=>'tooltip', :title=>'投稿者ページへ' } do
-      = post.user.avatar.present? ? image_tag(post.user.avatar.url,
-        style: 'width: 50px; height: 50px', class: 'rounded-circle') : gravatar_for(post.user, 50)
-    p.user_name = post.user.name
+= paginate @posts, remote: true
+.card-columns
+  - @posts.each do |post|
+    .card.text-center.mb-4
+      .card-header
+        = link_to user_path(post.user), class: 'avatar', :data => { :toggle=>'tooltip', :title=>'投稿者ページへ' } do
+          = post.user.avatar.present? ? image_tag(post.user.avatar.url,
+            style: 'width: 50px; height: 50px', class: 'rounded-circle') : gravatar_for(post.user, 50)
+        p.user_name = post.user.name
 
-  = render 'shared/thumbnail', post: post
+      = render 'shared/thumbnail', post: post
 
-  .card-body
-    h3.like_wrap
-      |
-      = post.title
-      / - unless @user == current_user #いいねボタン分岐
-      /   .like-link[id="like-of-#{post.id}"]
-      /     = render 'likes/like_links', post: post
-      / - else
-      /   i.fa.fa-star.star-color.my_likes[data-toggle="tooltip", data-title="お気に入り数"]
-      /     = post.likes.count.to_s
+      .card-body
+        h3.like_wrap
+          |
+          = post.title
+          / - unless @user == current_user #いいねボタン分岐
+          /   .like-link[id="like-of-#{post.id}"]
+          /     = render 'likes/like_links', post: post
+          / - else
+          /   i.fa.fa-star.star-color.my_likes[data-toggle="tooltip", data-title="お気に入り数"]
+          /     = post.likes.count.to_s
 
-    / youtubeURL削除
-    p  = yotube_url_delete(post)
-    -if post.melody.present?
-      p = audio_tag(post.melody.url, :controls => true)
+        / youtubeURL削除
+        p  = yotube_url_delete(post)
+        -if post.melody.present?
+          p = audio_tag(post.melody.url, :controls => true)
 
-    - if post.user == current_user #削除、編集ボタン分岐
-      = render 'shared/btn_group', post: post
-    - else
-      .show_btn
-        = link_to 'View', posts_path(post.user), class: 'btn btn-outline-info my-1'
+        - if post.user == current_user #削除、編集ボタン分岐
+          = render 'shared/btn_group', post: post
+        - else
+          .show_btn
+            = link_to 'View', posts_path(post.user), class: 'btn btn-outline-info my-1'
 
-  .card-footer.text-white.likes
-    = simple_time(post.created_at)
+      .card-footer.text-white.likes
+        = simple_time(post.created_at)

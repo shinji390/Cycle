@@ -42,8 +42,6 @@
 
   hr
 .container-fluid.posts_content
-  h3 All Music!
-  .card-columns#all_posts
-    = render @posts
-
-= paginate @posts
+  h3.title.mb-0 All Music!
+  #all_posts
+    = render :partial => "post"
