@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(10)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

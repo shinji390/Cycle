@@ -1,6 +1,9 @@
-= paginate @posts, remote: true
+.page_nite.text-right
+  = render partial: 'shared/page', locals: { posts: posts }
+= paginate posts, remote: true
+
 .card-columns
-  - @posts.each do |post|
+  - posts.each do |post|
     .card.text-center.mb-4
       .card-header
         = link_to user_path(post.user), class: 'avatar', :data => { :toggle=>'tooltip', :title=>'投稿者ページへ' } do
@@ -24,7 +27,7 @@
         / youtubeURL削除
         p  = yotube_url_delete(post)
         -if post.melody.present?
-          p = audio_tag(post.melody.url, :controls => true)
+          p = audio_tag(post.melody.url, controls: true)
 
         - if post.user == current_user #削除、編集ボタン分岐
           = render 'shared/btn_group', post: post

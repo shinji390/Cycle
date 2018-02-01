@@ -1,0 +1,26 @@
+.page_nite.text-right
+  = render partial: 'shared/page', locals: { posts: posts }
+= paginate posts, remote: true
+.row
+  - posts.each do |post|
+    .col-lg-4.col-sm-6.portfolio-item.text-center.mb-4
+      .card.h-100
+        = render 'shared/thumbnail', post: post
+        .card-body
+          h4.card-title = post.title
+
+          p.card-text
+            |
+            == yotube_url_delete(post)
+            -if post.melody.present?
+              p = audio_tag(post.melody.url, :controls => true)
+
+          - if post.user == current_user
+            = render 'shared/btn_group', post: post
+
+          - else
+            .show_btn
+              = link_to 'Show', posts_path(post.user), class: 'btn btn-outline-info my-1'
+
+        .card-footer.text-white.likes
+          = simple_time(post.created_at)

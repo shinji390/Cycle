@@ -44,4 +44,4 @@
 .container-fluid.posts_content
   h3.title.mb-0 All Music!
   #all_posts
-    = render :partial => "post"
+    = render partial: "post", locals: { posts: @posts }

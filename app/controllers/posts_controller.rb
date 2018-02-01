@@ -3,10 +3,10 @@ class PostsController < ApplicationController
 
   layout 'index_layout', only: [ :index ]
 
-  PER = 6
+  PER = 9
 
   def index
-    @posts = Post.order(:created_at).page(params[:page]).per(PER)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(PER)
     respond_to do |format|
       format.html
       format.js
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       flash[:notice] = '投稿しました'
-      redirect_back(fallback_location: posts_path)
+      redirect_to posts_path
     else
       render 'new'
     end
