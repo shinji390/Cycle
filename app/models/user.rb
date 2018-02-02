@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,7 +11,6 @@ class User < ApplicationRecord
 
   validates :name, uniqueness: true, length: { maximum: 20 }
   validates :profile, length: { maximum: 80 }, on: :update
-  has_many :posts, dependent: :destroy
 
   # アバター
   mount_uploader :avatar, AvatarUploader

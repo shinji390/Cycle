@@ -4,14 +4,14 @@
 .row
   - posts.each do |post|
     .col-lg-4.col-sm-6.portfolio-item.text-center.mb-4
-      .card.h-100
+      .card
         = render 'shared/thumbnail', post: post
         .card-body
           h4.card-title = post.title
 
           p.card-text
             |
-            == yotube_url_delete(post)
+            = yotube_url_delete(post)
             -if post.melody.present?
               p = audio_tag(post.melody.url, :controls => true)
 
@@ -21,6 +21,8 @@
           - else
             .show_btn
               = link_to 'Show', posts_path(post.user), class: 'btn btn-outline-info my-1'
+
+          = render 'likes/like_btn', post: post
 
         .card-footer.text-white.likes
           = simple_time(post.created_at)

@@ -1,0 +1,10 @@
+- if post.liked_user?(current_user.id)
+  = link_to post_like_path(post_id: post.id, id: post.id),id: 'myTooltip',
+  :data => { :toggle=>'tooltip', :title=>'お気に入りを解除する' }, method: :delete, remote: true do
+    i.fa.fa-heart.like-destroy
+      = post.likes.count
+- else
+  = link_to post_likes_path(post_id: post.id),id: 'myTooltip',
+  :data => { :toggle=>'tooltip', :title=>'お気に入りする' }, method: :post, remote: true do
+    i.fa.fa-heart-o.like-create
+      = post.likes.count

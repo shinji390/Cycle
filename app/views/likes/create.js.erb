@@ -1,0 +1,3 @@
+$("#like-of-<%= @post.id %>").html('<%= j(render("likes/like_link", post: @post)) %>');
+$('[data-toggle="tooltip"]').tooltip();
+$(".tooltip").tooltip("hide");

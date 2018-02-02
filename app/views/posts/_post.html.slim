@@ -17,12 +17,6 @@
         h3.like_wrap
           |
           = post.title
-          / - unless @user == current_user #いいねボタン分岐
-          /   .like-link[id="like-of-#{post.id}"]
-          /     = render 'likes/like_links', post: post
-          / - else
-          /   i.fa.fa-star.star-color.my_likes[data-toggle="tooltip", data-title="お気に入り数"]
-          /     = post.likes.count.to_s
 
         / youtubeURL削除
         p  = yotube_url_delete(post)
@@ -34,6 +28,9 @@
         - else
           .show_btn
             = link_to 'View', posts_path(post.user), class: 'btn btn-outline-info my-1'
+
+
+        = render 'likes/like_btn', post: post
 
       .card-footer.text-white.likes
         = simple_time(post.created_at)

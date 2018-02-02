@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   root 'posts#index'
   resources 'users', only: [:index, :show]
-  resources 'posts'
-
+  resources 'posts' do
+    resources 'likes', only: [ :create, :destroy ]
+  end
+    
 end
