@@ -1,1 +1,56 @@
-- breadcrumb :show_post, @post
+.jumbotron.jumbotron-fluid
+  .pankuzu.ml-4
+    = link_to 'ホーム', posts_path, class: 'link_home'
+    p
+      | /
+    p.active 詳細
+
+  .container
+    .row.justify-content-start
+      .col-sm-2
+        = render 'shared/user_avatar', post: @post
+      .col-sm-7.post_title
+        h2 = @post.title
+
+      .col-lg-3.meta
+        .row.meta_content
+          .col-xs-6.border-add
+            p.mb-0.mr-2.text-center
+              | いいね数
+              = @post.likes.count
+          .col-xs-6
+            p.mb-0.ml-2.text-center
+              | 閲覧数
+                0
+.container
+  .row
+    .col-lg-8
+      .thumbnail
+        = render 'shared/thumbnail', post: @post
+      .post-content
+        p.post-meta
+          | 投稿時間：
+          = simple_time(@post.created_at)
+
+        = yotube_url_delete(@post)
+        -if @post.melody.present?
+          p = audio_tag(@post.melody.url, :controls => true)
+
+        / 削除・編集ボタン
+        - if @post.user == current_user
+          = render 'shared/btn_group', post: @post
+
+        / いいねボタン
+        = render 'likes/like_btn', post: @post
+        hr
+
+    .col-lg-4
+      .card
+        .card-header.bg-info.text-white.py-4 投稿者のその他の投稿
+        .card-body
+          .user_other_content
+            - @post.user.posts.each do |post|
+              .linen_up
+                p.mb-0.py-2 = link_to "#{post.title}", posts_path(post.id), class: ''
+                i.fa.fa-star.star-color[data-toggle="tooltip", data-title="お気に入り数"]
+                  = post.likes.count.to_s

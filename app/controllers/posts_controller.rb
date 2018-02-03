@@ -1,14 +1,14 @@
 class PostsController < ApplicationController
   before_action :post_id_params, only: [ :show, :edit, :update, :destroy ]
 
-  layout 'index_layout', only: [ :index ]
+  layout 'index_layout', only: [ :index, :show ]
 
   PER = 9
 
   def index
     @posts = Post.order(created_at: :desc).page(params[:page]).per(PER)
     respond_to do |format|
-      format.html
+      format.html { render 'index' }
       format.js
     end
   end

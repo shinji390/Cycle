@@ -1,7 +1,17 @@
-.like_btn.text-right
-  - unless post.user == current_user #いいねボタン分岐
-    .[id="like-of-#{post.id}"]
-      = render 'likes/like_link', post: post
-  - else
-    i.fa.fa-star.star-color.my_likes[data-toggle="tooltip", data-title="お気に入り数"]
-      = post.likes.count.to_s
+- if controller.controller_name == 'posts' && action_name == 'show'
+  .like_btn.mt-4
+    - unless post.user == current_user #いいねボタン分岐
+      .[id="like-of-#{post.id}"]
+        = render 'likes/like_link', post: post
+    - else
+      i.fa.fa-star.star-color[data-toggle="tooltip", data-title="お気に入り数"]
+        = post.likes.count.to_s
+
+- else
+  .like_btn.text-right
+    - unless post.user == current_user #いいねボタン分岐
+      .[id="like-of-#{post.id}"]
+        = render 'likes/like_link', post: post
+    - else
+      i.fa.fa-star.star-color[data-toggle="tooltip", data-title="お気に入り数"]
+        = post.likes.count.to_s

@@ -5,11 +5,9 @@
 .card-columns
   - posts.each do |post|
     .card.text-center.mb-4
+
       .card-header
-        = link_to user_path(post.user), class: 'avatar', :data => { :toggle=>'tooltip', :title=>'投稿者ページへ' } do
-          = post.user.avatar.present? ? image_tag(post.user.avatar.url,
-            style: 'width: 50px; height: 50px', class: 'rounded-circle') : gravatar_for(post.user, 50)
-        p.user_name = post.user.name
+        = render 'shared/user_avatar', post: post
 
       = render 'shared/thumbnail', post: post
 
@@ -29,7 +27,7 @@
           .show_btn
             = link_to 'View', posts_path(post.user), class: 'btn btn-outline-info my-1'
 
-
+        / いいねボタン
         = render 'likes/like_btn', post: post
 
       .card-footer.text-white.likes

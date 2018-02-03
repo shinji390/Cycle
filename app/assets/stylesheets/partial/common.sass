@@ -12,12 +12,20 @@ audio
   margin-left: 2rem
   margin-top: 2rem
 
-.like-create
+.like-create,.like-destroy
   color: rgb(222, 26, 84)
+.star-color
+  color: #fed136
 
-.like-destroy
-  color: rgb(222, 26, 84)
+.pankuzu
+  display: flex
+  .link_home
+    color: #03A9F4
+  .active
+    color: black !important
 
+p.contents
+  font-size: 16px
 #users,#registrations,#posts,#passwords
   @import "module/font"
   .card-footer
@@ -186,3 +194,7 @@ audio
     .dropdown-toggle
       color: #fed136 !important
     color: #fed136 !important
+
+  .avatar_resize
+    width: 50px
+    height: 50px
