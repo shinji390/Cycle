@@ -1,0 +1,5 @@
+- @post.comments.each do |comment|
+  p = comment.user.name
+  p = comment.text
+  = link_to '削除', post_comment_path(post_id: @post.id, id: @post.id), method: :delete, remote: true
+= render 'comments/comment_create', post: @post

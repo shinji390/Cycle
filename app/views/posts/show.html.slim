@@ -41,9 +41,16 @@
           = render 'shared/btn_group', post: @post
 
         / いいねボタン
-        = render 'likes/like_btn', post: @post
+        .icon_group.mt-4
+          = render 'likes/like_btn', post: @post
+          i.fa.fa-comments.comment_icon.ml-4[data-toggle="tooltip", data-title="コメント数"]
+            = @post.comments.count.to_s
         hr
-
+      p
+        | コメントを投稿する
+        i.fa.fa-comments.comment_icon
+      .comment_area[id="comment-of-#{@post.id}"]
+        = render 'comments/comment_links', post: @post
     .col-lg-4
       .card
         .card-header.bg-info.text-white.py-4 投稿者のその他の投稿

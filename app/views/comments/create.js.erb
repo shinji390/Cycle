@@ -1,0 +1,2 @@
+$("#comment-of-<%= @post.id %>").html("<%= j(render partial: 'comments/comment_links', locals: {post: @post}) %>");
+$("#comment_field").val('');
