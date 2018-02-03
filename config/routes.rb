@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/edit'
+
   devise_for :users, :controllers => {
   :sessions      => "users/sessions",
   :registrations => "users/registrations",
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   resources 'users', only: [:index, :show]
   resources 'posts' do
     resources 'likes', only: [ :create, :destroy ]
+    resources 'comments', only: [ :create, :edit, :update, :destroy ]
   end
-    
+
 end

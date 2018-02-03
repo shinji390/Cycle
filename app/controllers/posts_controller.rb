@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.order(created_at: :desc).page(params[:page]).per(PER)
     respond_to do |format|
-      format.html { render 'index' }
+      format.html
       format.js
     end
   end
