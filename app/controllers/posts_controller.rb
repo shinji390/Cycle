@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   def update
     @post.update(post_params)
     flash[:notice] = '編集しました'
-    redirect_back(fallback_location: posts_path)
+    redirect_to post_path(@post)
   end
 
   def destroy

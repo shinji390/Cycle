@@ -1,0 +1,21 @@
+p.post-meta.mt-4
+  | 投稿時間：
+  = simple_time(@post.created_at)
+
+- if youtube(@post).present?
+  = youtube(@post)
+- else
+  = yotube_url_delete(@post)
+
+-if @post.melody.present?
+  p = audio_tag(@post.melody.url, :controls => true)
+
+/ 削除・編集ボタン
+- if @post.user == current_user
+  = render 'shared/btn_group', post: @post
+
+/ いいねボタン
+.icon_group.mt-4
+  = render 'likes/like_btn', post: @post
+  i.fa.fa-comments.comment_icon.ml-4[data-toggle="tooltip", data-title="コメント数"]
+    = @post.comments.count.to_s

@@ -1,0 +1,11 @@
+.pankuzu.ml-4
+  = link_to 'ホーム', posts_path, class: 'link_home'
+  p
+    | /
+  - if current_user == post.user
+    = link_to 'マイページ', user_path(post.user), class: 'link_home'
+  - else
+    = link_to "#{post.user.name}", user_path(post.user), class: 'link_home'
+  p
+    | /
+  p.active 詳細

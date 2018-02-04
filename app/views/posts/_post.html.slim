@@ -9,6 +9,7 @@
       .card-header
         = render 'shared/user_avatar', post: post
 
+      / サムネイル
       = render 'shared/thumbnail', post: post
 
       .card-body
@@ -17,7 +18,9 @@
           = post.title
 
         / youtubeURL削除
-        p  = yotube_url_delete(post)
+        = youtube_url_delete_slice(post)
+
+        / 音楽ファイル
         -if post.melody.present?
           p = audio_tag(post.melody.url, controls: true)
 

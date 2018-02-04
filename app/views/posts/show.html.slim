@@ -1,9 +1,5 @@
 .jumbotron.jumbotron-fluid
-  .pankuzu.ml-4
-    = link_to 'ホーム', posts_path, class: 'link_home'
-    p
-      | /
-    p.active 詳細
+  = render 'shared/pankuzu', post: @post
 
   .container
     .row.justify-content-start
@@ -28,29 +24,17 @@
       .thumbnail
         = render 'shared/thumbnail', post: @post
       .post-content
-        p.post-meta
-          | 投稿時間：
-          = simple_time(@post.created_at)
-
-        = yotube_url_delete(@post)
-        -if @post.melody.present?
-          p = audio_tag(@post.melody.url, :controls => true)
-
-        / 削除・編集ボタン
-        - if @post.user == current_user
-          = render 'shared/btn_group', post: @post
-
-        / いいねボタン
-        .icon_group.mt-4
-          = render 'likes/like_btn', post: @post
-          i.fa.fa-comments.comment_icon.ml-4[data-toggle="tooltip", data-title="コメント数"]
-            = @post.comments.count.to_s
+        = render 'show_content', post: @post
         hr
-      p
-        | コメントを投稿する
-        i.fa.fa-comments.comment_icon
-      .comment_area[id="comment-of-#{@post.id}"]
-        = render 'comments/comment_links', post: @post
+
+      .comment_area
+        p
+          | コメントを投稿する
+          i.fa.fa-comments.comment_icon
+
+        div [id="comment-of-#{@post.id}"]
+          = render 'comments/comment_links', post: @post
+
     .col-lg-4
       .card
         .card-header.bg-info.text-white.py-4 投稿者のその他の投稿

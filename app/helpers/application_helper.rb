@@ -39,6 +39,13 @@ module ApplicationHelper
     content_tag(:p, new_content, class: 'contents')
   end
 
+  def youtube_url_delete_slice(post)
+    content = post.content.gsub(/https:\/\/www.youtube.com\/watch\?v=(.+)/, "")
+    new_content = content.slice(0..100)
+    new_content.length > 100 ? new_content + '...' : new_content
+    content_tag(:p, new_content, class: 'contents')
+  end
+
   # youtube
   def youtube(post)
     if post.url.match(/https:\/\/www.youtube.com\/watch\?v=(.+)/)
