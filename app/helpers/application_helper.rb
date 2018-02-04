@@ -21,6 +21,11 @@ module ApplicationHelper
     title.empty? ? base_title : title + '|' + base_title
   end
 
+  # 改行表示
+  def br(str)
+    html_escape(str).gsub(/\r\n|\r|\n/, '').html_safe
+  end
+
   # gravatar
   def gravatar_for(user, size)
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)

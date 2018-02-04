@@ -18,8 +18,8 @@
           = post.title
 
         / youtubeURL削除
-        = youtube_url_delete_slice(post)
-
+        - content = youtube_url_delete_slice(post)
+        = br(content)
         / 音楽ファイル
         -if post.melody.present?
           p = audio_tag(post.melody.url, controls: true)
@@ -28,7 +28,7 @@
           = render 'shared/btn_group', post: post
         - else
           .show_btn
-            = link_to 'View', posts_path(post.user), class: 'btn btn-outline-info my-1'
+            a[href="/posts/#{post.id}", class='btn btn-outline-info my-1'] VIEW
 
         / いいねボタン
         = render 'likes/like_btn', post: post

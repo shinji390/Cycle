@@ -39,7 +39,7 @@
           | 自己紹介
           i.fa.fa-address-card-o
         .card-body.bg-light
-          p.card-text = @user.profile.present? ? @user.profile : '未設定です'
+          p.card-text = @user.profile.present? ? br(@user.profile) : '未設定です'
 
   hr
 .container-fluid.user_post

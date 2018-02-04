@@ -1,5 +1,15 @@
 - @post.comments.each do |comment|
-  p = comment.user.name
-  p = comment.text
-  = link_to '削除', post_comment_path(post_id: @post.id, id: @post.id), method: :delete, remote: true
+  .comment_avatar
+    = render 'shared/user_avatar', post: comment
+  .comment_text_box.rounded.p-3.mb-4.mt-3
+    p = comment.text
+    .comment_btns.text-right
+      = link_to post_comment_path(post_id: @post.id, id: @post.id), :data => { :toggle=>'tooltip', :title=>'編集' }, method: :delete, remote: true do
+        i.fa.fa-edit.mr-2
+      = link_to post_comment_path(post_id: @post.id, id: @post.id), :data => { :toggle=>'tooltip', :title=>'削除', confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する" }, method: :delete, remote: true do
+        i.fa.fa-trash
+hr
+p
+  | コメントを投稿する
+  i.fa.fa-pencil
 = render 'comments/comment_create', post: @post

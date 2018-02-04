@@ -29,11 +29,12 @@
 
       .comment_area
         p
-          | コメントを投稿する
+          | コメント一覧
           i.fa.fa-comments.comment_icon
 
-        div [id="comment-of-#{@post.id}"]
-          = render 'comments/comment_links', post: @post
+        #comment_create
+          div [id="comment-of-#{@post.id}"]
+            = render 'comments/comment_links', post: @post
 
     .col-lg-4
       .card
