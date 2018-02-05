@@ -6,4 +6,10 @@ class Comment < ApplicationRecord
   validates :url, format: { with: /https:\/\/www.youtube.com\/watch\?v=(.+)/ }, allow_blank: true
   validates :user_id, presence: true
   validates :post_id, presence: true
+
+  # 音楽ファイル
+  mount_uploader :melody, MusicUploader
+  # 動画ファイル
+  mount_uploader :video, VideoUploader
+
 end

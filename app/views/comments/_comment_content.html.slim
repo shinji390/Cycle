@@ -1,0 +1,13 @@
+- if comment.url.present?
+  .embed-responsive.embed-responsive-16by9
+    = thumbnail_youtube(comment)
+
+- elsif comment.video.present?
+  .embed-responsive.embed-responsive-16by9.video_wrap
+    = video_tag(comment.video_url,:controls => true,
+      class: 'embed-responsive-item')
+
+- elsif comment.melody.present?
+  p = audio_tag(comment.melody.url, :controls => true)
+
+p = simple_format(h(comment.text))

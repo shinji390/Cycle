@@ -44,7 +44,7 @@ module ApplicationHelper
     content_tag(:p, new_content, class: 'contents')
   end
 
-  def youtube_url_delete_slice(post)
+  def index_postcontent_slice(post)
     content = post.content.gsub(/https:\/\/www.youtube.com\/watch\?v=(.+)/, "")
     new_content = content.slice(0..100)
     new_content.length > 100 ? new_content + '...' : new_content
@@ -52,12 +52,23 @@ module ApplicationHelper
   end
 
   # youtube
-  def youtube(post)
+  def thumbnail_youtube(post)
     if post.url.match(/https:\/\/www.youtube.com\/watch\?v=(.+)/)
+      new_url = post.url.gsub('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
       iframe = content_tag(
         :iframe,
         '',
-        src: "https://www.youtube.com/embed/#{$1}",
+        src: "#{new_url}",
+        frameborder: 0,
+        allowfullscreen: true
+      )
+      content_tag(:div, iframe, class: 'card-img-top embed-responsive-item')
+    elsif post.text.match(/https:\/\/www.youtube.com\/watch\?v=(.+)/)
+      new_url = post.url.gsub('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
+      iframe = content_tag(
+        :iframe,
+        '',
+        src: "#{new_url}",
         frameborder: 0,
         allowfullscreen: true
       )

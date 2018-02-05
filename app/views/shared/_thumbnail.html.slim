@@ -2,7 +2,7 @@
 
   - if post.url.present?
     .embed-responsive.embed-responsive-4by3
-      = youtube(post)
+      = thumbnail_youtube(post)
   - elsif post.video.present?
     .embed-responsive.embed-responsive-16by9.video_wrap
       = video_tag(post.video_url,:controls => true,
@@ -17,7 +17,7 @@
   .img_link
     - if post.url.present?
       .embed-responsive.embed-responsive-4by3
-        = youtube(post)
+        = thumbnail_youtube(post)
     - elsif post.video.present?
       .embed-responsive.embed-responsive-16by9.video_wrap
         = video_tag(post.video_url,:controls => true,

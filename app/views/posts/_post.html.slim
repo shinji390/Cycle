@@ -18,7 +18,7 @@
           = post.title
 
         / youtubeURL削除
-        - content = youtube_url_delete_slice(post)
+        - content = index_postcontent_slice(post)
         = br(content)
         / 音楽ファイル
         -if post.melody.present?
