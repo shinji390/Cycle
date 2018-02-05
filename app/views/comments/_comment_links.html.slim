@@ -1,13 +1,18 @@
 - @post.comments.each do |comment|
   .comment_avatar
     = render 'shared/user_avatar', post: comment
-  .comment_text_box.rounded.p-3.mb-4.mt-3
-    p = comment.text
-    .comment_btns.text-right
-      = link_to post_comment_path(post_id: @post.id, id: @post.id), :data => { :toggle=>'tooltip', :title=>'編集' }, method: :delete, remote: true do
-        i.fa.fa-edit.mr-2
-      = link_to post_comment_path(post_id: @post.id, id: @post.id), :data => { :toggle=>'tooltip', :title=>'削除', confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する" }, method: :delete, remote: true do
-        i.fa.fa-trash
+
+  .other_comment[data-comment="#{comment.id}"]
+    .comment_text_box.rounded.p-3.mb-4.mt-3
+      p = simple_format(h(comment.text))
+
+      .comment_btns.text-right
+        small = simple_time(comment.created_at)
+        - if current_user == comment.user
+          = link_to edit_post_comment_path(post_id: @post.id, id: comment.id), :data => { :toggle=>'tooltip', :title=>'編集' }, remote: true do
+            i.fa.fa-edit.mr-2.ml-2
+          = link_to post_comment_path(post_id: @post.id, id: comment.id), :data => { :toggle=>'tooltip', :title=>'削除', confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する" }, method: :delete, remote: true do
+            i.fa.fa-trash
 hr
 p
   | コメントを投稿する

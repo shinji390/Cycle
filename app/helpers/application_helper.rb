@@ -68,9 +68,9 @@ module ApplicationHelper
   # current_page
   def current_page(url)
     if url == '/'
-      return 'current'
+      'current'
     elsif url == '/posts'
-      return 'current'
+      'current'
     end
   end
 

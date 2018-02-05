@@ -3,12 +3,12 @@
 
   .container
     .row.justify-content-start
-      .col-sm-2
+      .col-sm-2.text-center
         = render 'shared/user_avatar', post: @post
-      .col-sm-7.post_title
+      .col-sm-8.post_title
         h2 = @post.title
 
-      .col-lg-3.meta
+      .col-lg-2.meta
         .row.meta_content
           .col-xs-6.border-add
             p.mb-0.mr-2.text-center

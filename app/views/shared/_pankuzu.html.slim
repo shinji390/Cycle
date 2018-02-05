@@ -5,7 +5,7 @@
   - if current_user == post.user
     = link_to 'マイページ', user_path(post.user), class: 'link_home'
   - else
-    = link_to "#{post.user.name}", user_path(post.user), class: 'link_home'
+    = link_to "#{post.user.name}さんのページ", user_path(post.user), class: 'link_home'
   p
     | /
   p.active 詳細

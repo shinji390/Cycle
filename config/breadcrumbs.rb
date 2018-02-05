@@ -11,7 +11,7 @@ crumb :mypage do |user|
   if user.name == current_user.name
     link 'マイページ', user_path(user)
   else
-    link user.name, user_path(user)
+    link user.name + 'さんのページ', user_path(user)
   end
   parent :all_users
 end
