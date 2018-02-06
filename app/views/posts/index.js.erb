@@ -1,1 +1,4 @@
 $("#all_posts").html("<%= j(render partial: 'post', locals: {posts: @posts}) %>");
+jQuery(function($){
+  $('[data-toggle="tooltip"]').tooltip();
+});

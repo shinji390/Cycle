@@ -1,6 +1,6 @@
 .page_nite.text-right
   = render partial: 'shared/page', locals: { posts: posts }
-= paginate posts, remote: true
+
 
 .card-columns
   - posts.each do |post|
@@ -35,3 +35,5 @@
 
       .card-footer.text-white.likes
         = simple_time(post.created_at)
+
+= paginate posts

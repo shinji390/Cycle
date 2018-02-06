@@ -16,9 +16,9 @@
   height: 100%;
 }
 .form-content {
-  background: #00000030;
     padding: 1.5rem 1.5rem 0.7rem 1.5rem;
     border-radius: 10px;
+    border: 5px solid white;
   }
 
 .navbar {
@@ -66,10 +66,65 @@
 header.masthead {
   text-align: center;
   color: white;
-  background-image: url('header-bg.jpg');
+  background-image: url('music.jpg');
   background-repeat: no-repeat;
-  background-attachment: scroll;
+  background-attachment: fixed;
   background-position: center center;
+  background-size: cover;
+  .gradation {
+    background: linear-gradient( 120deg, rgba(#13b266, .72), rgba(#26b8d0, .72), rgba(#326bb9, .72), rgba(#c147b7, .72), rgba(#ce3d68, .72)) fixed;
+    background-size: 500%;
+    height: 100%;
+    // Animation
+    -webkit-animation: bg-gradient 15s ease infinite;
+    -moz-animation: bg-gradient 15s ease infinite;
+    -o-animation: bg-gradient 15s ease infinite;
+    animation: bg-gradient 15s ease infinite;
+    @-webkit-keyframes bg-gradient {
+        0% {
+          background-position: 14% 0;
+        }
+        50% {
+          background-position: 87% 100%;
+        }
+        100% {
+          background-position: 14% 0;
+        }
+      }
+      @-moz-keyframes bg-gradient {
+        0% {
+          background-position: 14% 0;
+        }
+        50% {
+          background-position: 87% 100%;
+        }
+        100% {
+          background-position: 14% 0;
+        }
+      }
+      @-o-keyframes bg-gradient {
+        0% {
+          background-position: 14% 0;
+        }
+        50% {
+          background-position: 87% 100%;
+        }
+        100% {
+          background-position: 14% 0;
+        }
+      }
+      @keyframes bg-gradient {
+        0% {
+          background-position: 14% 0;
+        }
+        50% {
+          background-position: 87% 100%;
+        }
+        100% {
+          background-position: 14% 0;
+        }
+      }
+  }
   .intro-text {
     .intro-lead {
       font-family: 'Joti One', cursive;
