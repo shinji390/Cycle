@@ -5,19 +5,21 @@ body {
   overflow-x: hidden;
 }
 
+[type="button"] {
+  -webkit-appearance : none;
+}
+
 p {
   line-height: 1.75;
 }
 
-a {
-  color: $yellow;
-  &:hover {
-    color: darken($yellow, 10%);
-  }
+nav {
+  a {
+    color: $yellow;
+    &:hover {
+      color: darken($yellow, 10%);
+    }
 }
-
-.text-primary {
-  color: $yellow !important;
 }
 
 h1,
@@ -46,7 +48,7 @@ section {
 }
 @media(min-width:768px) {
   section {
-    padding: 150px 0;
+    padding: 100px 0 150px 0;
   }
 }
 
@@ -61,41 +63,41 @@ section {
   padding: 20px 40px;
 }
 
-.btn-primary {
-  background-color: $yellow;
-  border-color: $yellow;
-  &:active,
-  &:focus,
-  &:hover {
-    background-color: darken($yellow, 7.5%) !important;
-    border-color: darken($yellow, 7.5%) !important;
-    color: white;
-  }
-  &:active,
-  &:focus {
-    box-shadow: 0 0 0 0.2rem rgba(254, 209, 55,.5) !important;
-  }
-}
+// .btn-primary {
+//   background-color: $yellow;
+//   border-color: $yellow;
+//   &:active,
+//   &:focus,
+//   &:hover {
+//     background-color: darken($yellow, 7.5%) !important;
+//     border-color: darken($yellow, 7.5%) !important;
+//     color: white;
+//   }
+//   &:active,
+//   &:focus {
+//     box-shadow: 0 0 0 0.2rem rgba(254, 209, 55,.5) !important;
+//   }
+// }
 
 // Highlight color customization
-::-moz-selection {
-  background: $yellow;
-  text-shadow: none;
-}
-
-::selection {
-  background: $yellow;
-  text-shadow: none;
-}
-
-img::selection {
-  background: transparent;
-}
-
-img::-moz-selection {
-  background: transparent;
-}
-
-body {
-  -webkit-tap-highlight-color: $yellow;
-}
+// ::-moz-selection {
+//   background: $yellow;
+//   text-shadow: none;
+// }
+//
+// ::selection {
+//   background: $yellow;
+//   text-shadow: none;
+// }
+//
+// img::selection {
+//   background: transparent;
+// }
+//
+// img::-moz-selection {
+//   background: transparent;
+// }
+//
+// body {
+//   -webkit-tap-highlight-color: $yellow;
+// }

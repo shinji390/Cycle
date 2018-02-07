@@ -35,7 +35,34 @@
         color: rgb(0, 171, 255)
         background: #fff
         border-color: rgb(0, 171, 255)
-
+  .gradation
+    .btn-info
+      background: $yellow
+      border: $yellow
+      &.active,
+      &:active,
+      &:focus,
+      &:hover
+        background: darken($yellow, 10%)
+    .btn-outline-light
+      &.active,
+      &:active,
+      &:focus,
+      &:hover
+        color: $primary
+  #services
+    background: #ffc864
+  #contacts
+    background: #607d8b
+    .contact_area
+      height: 400px
+  #top_footer
+    .btn
+      padding: 1rem
+      font-size: 1rem
+      &:hover
+        color: $yellow
+    background: black
 #passwords
 
 

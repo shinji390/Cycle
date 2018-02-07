@@ -16,7 +16,7 @@
   height: 100%;
 }
 .form-content {
-    padding: 1.5rem 1.5rem 0.7rem 1.5rem;
+    padding: 2rem 2rem 0.7rem 2rem;
     border-radius: 10px;
     border: 5px solid white;
   }
@@ -133,6 +133,11 @@ header.masthead {
   }
 }
 
+@media (max-width: 991px) {
+  .masthead {
+    height: 90vh;
+  }
+}
 
 @media (max-width: 992px) {
   .intro-lead {

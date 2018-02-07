@@ -9,8 +9,11 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
     #navbarResponsive.collapse.navbar-collapse
       ul.navbar-nav.text-uppercase.ml-auto
         li.nav-item
-          a.nav-link.js-scroll-trigger href="#login" LogIn
+          a.nav-link.js-scroll-trigger href="#login" ホーム
         li.nav-item
-          a.nav-link.js-scroll-trigger href="#services" About
+          a.nav-link.js-scroll-trigger href="#services" ログイン
         li.nav-item
-          a.nav-link.js-scroll-trigger href="#contacts" Contact
+          a.nav-link.js-scroll-trigger href="#contacts" お問い合わせ
+        
+        li.nav-item.mr-auto
+          = link_to 'アカウント作成', new_registration_path(resource_name), class: 'nav-link'

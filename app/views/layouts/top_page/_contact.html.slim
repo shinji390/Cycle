@@ -1,5 +1,17 @@
 section#contacts
   .container
-    .row
-      .col-lg-12.text-center
-        h1 contact
+    .col-lg-12.text-center
+      h2.section-heading.text-uppercase.text-white
+        | contact
+        i.fa.fa-sign-in.ml-1
+
+    .row.justify-content-center
+      .col-lg-7
+        = form_with(url: posts_path, local: true) do |f|
+          .form-group
+            = f.label :name ,'お名前', class: 'text-white'
+            = f.text_field :name, class: 'form-control'
+            = f.label :email, 'メールアドレス', class: 'text-white'
+            = f.text_field :email, class: 'form-control'
+            = f.label :text, 'お問い合わせ内容', class: 'text-white'
+            = f.text_area :text, class: 'form-control contact_area'
