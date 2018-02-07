@@ -4,6 +4,12 @@ class User < ApplicationRecord
   has_many :like_posts, through: :likes, source: :post
   has_many :comments, dependent: :destroy
   has_many :comment_posts, through: :comments, source: :post
+  has_many :active_relationships, foreign_key: 'follower_id',
+            class_name: 'Relationship', dependent: :destroy
+  has_many :passive_relationships, foreign_key: 'followed_id',
+            class_name: 'Relationship', dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,6 +22,21 @@ class User < ApplicationRecord
 
   # アバター
   mount_uploader :avatar, AvatarUploader
+
+  # 指定のユーザーをフォロー
+  def follow!(other_user)
+    active_relationships.create!(followed_id: other_user.id)
+  end
+
+  # フォローしているかどうかを確認
+  def following?(other_user)
+    active_relationships.find_by(followed_id: other_user.id)
+  end
+
+  # フォロー解除
+  def unfollow!(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
 
   # TwitterLogin
   def self.find_for_oauth(auth)

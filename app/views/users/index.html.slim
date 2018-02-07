@@ -1,2 +1,8 @@
 - breadcrumb :all_users
-  h1 hello
+
+
+h2 ユーザー
+- @users.each do |user|
+  = user.name
+  = user.email
+  = render 'follow_form', user: user
