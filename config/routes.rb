@@ -8,7 +8,10 @@ Rails.application.routes.draw do
 }
 
   root 'posts#index'
+  get 'static_pages/about'
+
   resources 'users', only: [:index, :show]
+
   resources 'posts' do
     resources 'likes', only: [ :create, :destroy ]
     resources 'comments', only: [ :create, :edit, :update, :destroy ]

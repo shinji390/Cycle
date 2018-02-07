@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :post_id_params, only: [ :show, :edit, :update, :destroy ]
 
   layout 'index_layout', only: [ :index, :show ]

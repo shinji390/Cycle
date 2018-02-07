@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :post_id_params, only: [ :create, :edit, :update, :destroy ]
   before_action :comment_id_params, only: [ :edit, :update ]
 
