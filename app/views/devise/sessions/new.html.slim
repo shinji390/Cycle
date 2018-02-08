@@ -1,19 +1,23 @@
-header.masthead
-  .gradation
-    .container.main-wrapper
-      .row.justify-content-center.contents
-        .col-lg-7
-          .intro-text
-            .intro-lead Cycle
-            h4.intro-lead-text.text-white
-              | 音楽の共有・発見サービス
-            p.text-white
-              | 色々・様々な音楽に出会える場
+.container.login_wrap
+  .col-lg-12.text-center
+    h2.section-heading.text-uppercase.text-muted
+      | LOGIN
+      i.fa.fa-sign-in.ml-1
 
-            a [type="button" class="btn btn-info w-75 mb-4" href="#services"] ログイン
+  .row.justify-content-center
+    .col-lg-6.col-md-9.form-content.text-center
 
-            = link_to 'アカウント作成', new_registration_path(resource_name), class: 'btn btn-outline-light w-75'
+      = render 'devise/shared/flash'
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-group
+          = f.email_field :email,autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'メールアドレス'
 
-= render 'layouts/top_page/service'
-= render 'layouts/top_page/contact'
-= render 'layouts/top_page/footer'
+          = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'パスワード'
+
+        - if devise_mapping.rememberable?
+          = f.check_box :remember_me
+          = f.label :remember_me, 'パスワードを記憶する', class: 'ml-2'
+
+        .actions
+          = f.submit "ログイン", class: 'btn btn-info w-100'
+      = render "devise/shared/links"

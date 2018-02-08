@@ -1,8 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 layout 'application'
 
-before_action :authenticate_user!
-
 protected
 
 def update_resource(resource, params)

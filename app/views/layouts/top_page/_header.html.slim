@@ -11,9 +11,11 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
         li.nav-item
           a.nav-link.js-scroll-trigger href="#login" ホーム
         li.nav-item
-          a.nav-link.js-scroll-trigger href="#services" ログイン
+          a.nav-link.js-scroll-trigger href="#services" サービス
         li.nav-item
           a.nav-link.js-scroll-trigger href="#contacts" お問い合わせ
-        
+        p.nav-item.text-white.mb-0.align-center.separate |
+        li.nav-item.mr-auto
+          = link_to 'ログイン', new_session_path(resource_name), class: 'nav-link'
         li.nav-item.mr-auto
           = link_to 'アカウント作成', new_registration_path(resource_name), class: 'nav-link'

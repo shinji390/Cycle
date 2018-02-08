@@ -10,10 +10,9 @@ header.masthead
             p.text-white
               | 色々・様々な音楽に出会える場
 
-            a [type="button" class="btn btn-info w-75 mb-4" href="#services"] ログイン
+            = link_to 'ログイン', new_session_path(resource_name), class: 'btn btn-info w-75 mb-4'
 
             = link_to 'アカウント作成', new_registration_path(resource_name), class: 'btn btn-outline-light w-75'
-
 = render 'layouts/top_page/service'
 = render 'layouts/top_page/contact'
 = render 'layouts/top_page/footer'

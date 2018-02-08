@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 }
 
   root 'posts#index'
-  get 'static_pages/about'
-
+  get 'top', to: 'static_pages#index'
+  get 'about', to: 'static_pages#about'
   resources 'users', only: [:index, :show]
 
   resources 'posts' do
