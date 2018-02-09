@@ -6,33 +6,29 @@
       p.user_name = @user.name
 
       .profile_btn.my-4
-        = link_to 'プロフィールを編集する', edit_user_registration_path(@user), class: 'btn btn-info'
-      - unless current_user == @user
-        = render 'users/follow_form', user: @user
+        - if current_user == @user
+          = link_to 'プロフィールを編集する', edit_user_registration_path(@user), class: 'btn btn-info'
+        - else
+          = render 'users/follow_form', user: @user
 
     .col-lg-7.text-center
       .user_content
-        - if current_user == @user
-          p
-            | 投稿数
-            br
-            span.number_count = @user.posts.count
-          p
-            | お気に入り
-            br
-            span.number_count 0
-          p.post_icon = link_to new_post_path, class: 'new_post btn btn-outline-light text-center rounded-circle',
-          :data => { :toggle=>'tooltip', :title=>'投稿する' }, method: :get do
-            i.fa.fa-pencil
-        - else
-          p
-            | 投稿数
-            br
-            span.number_count = @user.posts.count
-          p
-            | お気に入り
-            br
-            span.number_count 0
+        p
+          | フォロー
+          br
+          span.number_count = @user.following.count
+        p
+          | フォロワー
+          br
+          span.number_count = @user.followers.count
+        p
+          | 投稿
+          br
+          span.number_count = @user.posts.count
+        p
+          | お気に入り
+          br
+          span.number_count = @user.likes.count
 
       hr
 
@@ -44,6 +40,6 @@
           p.card-text = @user.profile.present? ? br(@user.profile) : '未設定です'
 
   hr
-.container-fluid.user_post
+.container
   #all_posts
     = render partial: 'post', locals: { posts: @posts }

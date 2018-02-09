@@ -46,8 +46,8 @@ module ApplicationHelper
 
   def index_postcontent_slice(post)
     content = post.content.gsub(/https:\/\/www.youtube.com\/watch\?v=(.+)/, "")
-    new_content = content.slice(0..100)
-    new_content.length > 100 ? new_content + '...' : new_content
+    new_content = content.slice(0..300)
+    new_content.length > 300 ? new_content + '...' : new_content
     content_tag(:p, new_content, class: 'contents')
   end
 

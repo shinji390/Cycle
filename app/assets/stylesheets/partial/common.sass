@@ -11,17 +11,18 @@ audio
 .title
   margin-left: 2rem
   margin-top: 2rem
-
+.comment_link
+  color: #03a9f4
 .like-create,.like-destroy
   color: rgb(222, 26, 84)
 .star-color
   color: #fed136
 .like_btn
   display: flex
-  justify-content: flex-end
-
-.comment_icon
+.eye_icon
   color: #009688
+.comment_icon
+  color: rgb(68, 74, 69)
 
 .pankuzu
   display: flex
@@ -43,8 +44,6 @@ p.contents
   font-size: 16px
 #users,#registrations,#posts,#passwords, #sessions
   @import "module/font"
-  .card-footer
-    background-color: rgba(158, 158, 158, 0.79) !important
   min-height: 100%
   height: auto !important
   height: 100%
@@ -53,6 +52,8 @@ p.contents
   padding-top: 64px
   background: #fff
 
+  .nav-item
+    margin-right: 2rem !important
   .btn-lg
     padding: 1.75rem
 
@@ -200,8 +201,8 @@ p.contents
     color: #fed136 !important
     font-family: 'Joti One', cursive
   .navbar-shrink
-    padding-top: 0
-    padding-bottom: 0
+    padding-top: 0.25rem
+    padding-bottom: 0.25rem
     background-color: #343a40
 
 

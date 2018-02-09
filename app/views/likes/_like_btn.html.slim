@@ -2,18 +2,20 @@
   - unless post.user == current_user #いいねボタン分岐
     .[id="like-of-#{post.id}"]
       = render 'likes/like_link', post: post
-
+    .views
+      i.fa.fa-eye.eye_icon.ml-2[data-toggle="tooltip", data-title="閲覧数"]
+        | 0
     .comments
-      - if controller.controller_name == 'posts' && action_name == 'show'
-        i.fa.fa-commenting.comment_icon.ml-2[data-toggle="tooltip", data-title="コメント数"]
-          = post.comments.count.to_s
-      - else
-        = link_to post_path(post.id, anchor: :comment_create) do
-          i.fa.fa-commenting.comment_icon.ml-2[data-toggle="tooltip", data-title="コメントする"]
-            = post.comments.count.to_s
+      i.fa.fa-commenting.comment_icon.ml-2[data-toggle="tooltip", data-title="コメント数"]
+        = post.comments.count.to_s
+
 
   - else
     i.fa.fa-star.star-color[data-toggle="tooltip", data-title="お気に入り数"]
       = post.likes.count.to_s
+    i.fa.fa-eye.eye_icon.ml-2[data-toggle="tooltip", data-title="閲覧数"]
+      | 0
     i.fa.fa-commenting.comment_icon.ml-2[data-toggle="tooltip", data-title="コメント数"]
       = post.comments.count
+
+  = link_to 'コメントする', post_path(post.id, anchor: :comment_create), class: 'ml-auto comment_link'

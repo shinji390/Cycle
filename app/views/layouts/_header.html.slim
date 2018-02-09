@@ -6,15 +6,15 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
   #navbarNavDropdown.collapse.navbar-collapse
     ul.navbar-nav.ml-auto
       li.nav-item
-        = link_to user_signed_in? ? posts_path : new_user_session_path, class: "nav-link #{current_page(request.path)}" do
+        = link_to user_signed_in? ? posts_path : top_path, class: "nav-link #{current_page(request.path)}" do
           i.fa.fa-home.mr-1
           | ホーム
           span.sr-only (現位置)
       - if user_signed_in?
-        / li.nav-item
-        /   = link_to new_post_path, class: 'nav-link', method: :get do
-        /     i.fa.fa-headphones.mr-1
-        /     | 投稿
+        li.nav-item
+          = link_to new_post_path, class: "nav-link #{'current' if current_page?(new_post_path)}", method: :get do
+            i.fa.fa-headphones.mr-1
+            | 投稿
         li.nav-item
           = link_to user_path(current_user), class: "nav-link #{'current' if current_page?(current_user)}",
           method: :get do

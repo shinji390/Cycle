@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   root 'posts#index'
   get 'top', to: 'static_pages#index'
   get 'about', to: 'static_pages#about'
-  resources 'users', only: [:index, :show]
+  resources 'users', only: [:index, :show] do
+    get 'favorites', on: :member
+  end
 
   resources 'posts' do
     resources 'likes', only: [ :create, :destroy ]

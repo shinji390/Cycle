@@ -10,7 +10,7 @@ html [lang="ja"]
   body [id="#{controller.controller_name}"]
     div [class="#{action_name}-wrapper" id="page-top"]
       = render 'layouts/header'
-      = render 'shared/flash' unless current_page?(new_user_session_path)
+      = render 'shared/flash'
       .container
         == breadcrumbs separator: "&nbsp;/&nbsp;", style: :bootstrap
         = yield

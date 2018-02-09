@@ -29,11 +29,12 @@
         - else
           .show_btn
             a[href="/posts/#{post.id}", class='btn btn-outline-info my-1'] VIEW
+        .post_time.text-right.mt-2
+          small = simple_time(post.created_at)
 
-        / いいねボタン
-        = render 'likes/like_btn', post: post
 
       .card-footer.text-white.likes
-        = simple_time(post.created_at)
+        / いいねボタン
+        = render 'likes/like_btn', post: post
 
 = paginate posts

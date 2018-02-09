@@ -39,11 +39,9 @@
 
     .col-lg-4
       .card
-        .card-header.bg-info.text-white.py-4 投稿者のその他の投稿
+        .card-header.bg-secondary.text-white 投稿者のその他の投稿
         .card-body
           .user_other_content
             - @post.user.posts.each do |post|
               .linen_up
                 p.mb-0.py-2 = link_to "#{post.title}", posts_path(post.id), class: ''
-                i.fa.fa-star.star-color[data-toggle="tooltip", data-title="お気に入り数"]
-                  = post.likes.count.to_s
