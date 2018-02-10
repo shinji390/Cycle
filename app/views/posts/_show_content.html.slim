@@ -1,16 +1,20 @@
 p.post-meta.mt-4
   | 投稿時間：
-  = simple_time(@post.created_at)
+  = simple_time(post.created_at)
 
-- if @post.melody.present?
-  p = audio_tag(@post.melody.url, :controls => true)
+- if post.melody.present?
+  p = audio_tag(post.melody.url, :controls => true)
 
-p = simple_format(h(@post.content))
+p = simple_format(h(post.content))
 
 / 削除・編集ボタン
-- if @post.user == current_user
-  = render 'shared/btn_group', post: @post
+- if post.user == current_user
+  .show-wrap-btn
+    = link_to 'EDIT', edit_post_path(post.id) , class:'btn btn-sm btn-outline-warning mr-1'
+    = link_to 'DELETE' ,post_path(post.id), class:'btn btn-sm btn-outline-danger',
+    data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
+    title: "削除の確認", method: :delete
 
 / いいねボタン
 .icon_group.mt-4
-  = render 'likes/like_btn', post: @post
+  = render 'likes/like_btn', post: post

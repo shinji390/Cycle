@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 30 }
-  validates :content, presence: true, length: { maximum: 1200 }
+  validates :content, presence: true, length: { maximum: 3000 }
   validates :url, format: { with: /https:\/\/www.youtube.com\/watch\?v=(.+)/ }, allow_blank: true
 
   # 音楽ファイル

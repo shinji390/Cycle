@@ -1,9 +1,12 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
+
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
+
   has_many :comments, dependent: :destroy
   has_many :comment_posts, through: :comments, source: :post
+
   has_many :active_relationships, foreign_key: 'follower_id',
             class_name: 'Relationship', dependent: :destroy
   has_many :passive_relationships, foreign_key: 'followed_id',
@@ -17,7 +20,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:twitter]
 
-  validates :name, uniqueness: true, length: { maximum: 20 }
+  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :profile, length: { maximum: 80 }, on: :update
 
   # アバター

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :user_id_params, only: [ :show ]
+  before_action :user_id_params, only: [ :show, :favorites, :followed, :followers ]
   before_action :authenticate_user!
   layout 'index_layout', only:[:show]
   def index
@@ -12,6 +12,15 @@ class UsersController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  def favorites
+  end
+
+  def followers
+  end
+
+  def followed
   end
 
   private

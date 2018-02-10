@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   :omniauth_callbacks => "omniauth_callbacks"
 }
 
-  root 'posts#index'
+  root 'static_pages#index'
   get 'top', to: 'static_pages#index'
   get 'about', to: 'static_pages#about'
   resources 'users', only: [:index, :show] do
     get 'favorites', on: :member
+    get 'followers', on: :member
+    get 'followed', on: :member
   end
 
   resources 'posts' do

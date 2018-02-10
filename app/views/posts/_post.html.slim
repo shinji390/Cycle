@@ -18,8 +18,8 @@
           = post.title
 
         / youtubeURL削除
-        - content = index_postcontent_slice(post)
-        = br(content)
+
+        p.contents = br(index_postcontent_slice(post))
         / 音楽ファイル
         -if post.melody.present?
           p = audio_tag(post.melody.url, controls: true)

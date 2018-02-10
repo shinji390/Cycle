@@ -1,15 +1,7 @@
-- if (controller.controller_name == 'posts' && action_name == 'index') || (controller.controller_name == 'users')
-  .text-center
-    a[href="/posts/#{post.id}", class='btn btn-sm btn-outline-info mr-1'] VIEW
-    / = link_to 'VIEW', posts_path(post.id), class: 'btn btn-sm btn-outline-info mr-1'
-    = link_to 'EDIT', edit_post_path(post.id) , class:'btn btn-sm btn-outline-warning mr-1'
-    = link_to 'DELETE' ,post_path(post.id), class:'btn btn-sm btn-outline-danger',
-    data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
-    title: "削除の確認", method: :delete
-
-- else
-  .show-wrap-btn
-    = link_to 'EDIT', edit_post_path(post.id) , class:'btn btn-sm btn-outline-warning mr-1'
-    = link_to 'DELETE' ,post_path(post.id), class:'btn btn-sm btn-outline-danger',
-    data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
-    title: "削除の確認", method: :delete
+.text-center
+  a[href="/posts/#{post.id}", class='btn btn-sm btn-outline-info mr-1'] VIEW
+  / = link_to 'VIEW', posts_path(post.id), class: 'btn btn-sm btn-outline-info mr-1'
+  = link_to 'EDIT', edit_post_path(post.id) , class:'btn btn-sm btn-outline-warning mr-1'
+  = link_to 'DELETE' ,post_path(post.id), class:'btn btn-sm btn-outline-danger',
+  data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
+  title: "削除の確認", method: :delete

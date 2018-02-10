@@ -11,7 +11,7 @@
 
           p.card-text
             |
-            = yotube_url_delete(post)
+            = br(index_postcontent_slice(post))
             -if post.melody.present?
               p = audio_tag(post.melody.url, :controls => true)
 

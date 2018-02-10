@@ -14,19 +14,20 @@
     .col-lg-7.text-center
       .user_content
         p
-          | フォロー
-          br
-          span.number_count = @user.following.count
-        p
-          | フォロワー
-          br
-          span.number_count = @user.followers.count
-        p
-          | 投稿
+          = link_to '投稿', user_path(@user)
           br
           span.number_count = @user.posts.count
         p
-          | お気に入り
+          = link_to 'フォロー', followed_user_path(@user)
+          br
+          span.number_count = @user.following.count
+        p
+          = link_to 'フォロワー', followers_user_path(@user)
+          br
+          span.number_count = @user.followers.count
+
+        p
+          = link_to 'お気に入り', favorites_user_path(@user)
           br
           span.number_count = @user.likes.count
 
