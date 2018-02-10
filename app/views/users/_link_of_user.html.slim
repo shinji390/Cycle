@@ -1,0 +1,17 @@
+p
+  = link_to '投稿', user_path(user), class: "#{'user_current' if current_page?(current_user)}"
+  br
+  span.number_count = user.posts.count
+p
+  = link_to 'フォロー', followed_user_path(user), class: "#{'user_current' if current_page?(followed_user_path)}"
+  br
+  span.number_count = user.following.count
+p
+  = link_to 'フォロワー', followers_user_path(user), class: "#{'user_current' if current_page?(followers_user_path)}"
+  br
+  span.number_count = user.followers.count
+
+p
+  = link_to 'お気に入り', favorites_user_path(user), class: "#{'user_current' if current_page?(favorites_user_path)}"
+  br
+  span.number_count = user.likes.count

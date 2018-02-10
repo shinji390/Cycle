@@ -25,5 +25,5 @@
         / = image_tag(post.video_url(:screenshot), id: "video", :alt => "screenshot")
     - elsif post.melody.present?
       = image_tag('sample3.jpg', class: 'card-img-top')
-    - else
-      = image_tag('sample4.jpg', class: 'card-img-top')
+    / - else
+    /   = image_tag('sample4.jpg', class: 'card-img-top')

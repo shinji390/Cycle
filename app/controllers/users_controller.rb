@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :user_id_params, only: [ :show, :favorites, :followed, :followers ]
   before_action :authenticate_user!
-  layout 'index_layout', only:[:show]
   def index
     @users = User.all
   end

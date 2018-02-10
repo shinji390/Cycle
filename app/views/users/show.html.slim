@@ -1,46 +1,5 @@
-.container
-  - breadcrumb :mypage,@user
-  .row
-    .col-lg-5.text-center
-      = @user.avatar.present? ? image_tag(@user.avatar.url, class: 'rounded-circle') : gravatar_for(@user, 120)
-      p.user_name = @user.name
-
-      .profile_btn.my-4
-        - if current_user == @user
-          = link_to 'プロフィールを編集する', edit_user_registration_path(@user), class: 'btn btn-info'
-        - else
-          = render 'users/follow_form', user: @user
-
-    .col-lg-7.text-center
-      .user_content
-        p
-          = link_to '投稿', user_path(@user)
-          br
-          span.number_count = @user.posts.count
-        p
-          = link_to 'フォロー', followed_user_path(@user)
-          br
-          span.number_count = @user.following.count
-        p
-          = link_to 'フォロワー', followers_user_path(@user)
-          br
-          span.number_count = @user.followers.count
-
-        p
-          = link_to 'お気に入り', favorites_user_path(@user)
-          br
-          span.number_count = @user.likes.count
-
-      hr
-
-      .card.text-white.bg-secondary.mb-3
-        .card-header
-          | 自己紹介
-          i.fa.fa-address-card-o
-        .card-body.bg-light
-          p.card-text = @user.profile.present? ? br(@user.profile) : '未設定です'
-
-  hr
-.container
-  #all_posts
-    = render partial: 'post', locals: { posts: @posts }
+- breadcrumb :mypage,@user
+= render 'user_profile', user: @user
+hr
+#all_posts
+  = render partial: 'post', locals: { posts: @posts }

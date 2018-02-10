@@ -1,5 +1,5 @@
 crumb :root do
-  link "ホーム", root_path
+  link "ホーム", posts_path
 end
 # ユーザー
 crumb :all_users do
@@ -14,6 +14,21 @@ crumb :mypage do |user|
     link user.name + 'さんのページ', user_path(user)
   end
   parent :all_users
+end
+
+crumb :follower do |user|
+  link 'フォロワー'
+  parent :mypage, user
+end
+
+crumb :followed do |user|
+  link 'フォロー'
+  parent :mypage, user
+end
+
+crumb :favorites do |user|
+  link 'お気に入り'
+  parent :mypage, user
 end
 
 crumb :edit_profile do |user|

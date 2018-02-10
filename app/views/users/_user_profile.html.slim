@@ -1,0 +1,26 @@
+.row
+  .col-lg-5.text-center
+    = user.avatar.present? ? image_tag(user.avatar.url, class: 'rounded-circle') : gravatar_for(user, 120)
+    p.user_name = user.name
+
+    .profile_btn.my-4
+      - if current_user == user
+        = link_to 'プロフィールを編集する', edit_user_registration_path(user), class: 'btn btn-info'
+      - else
+        = render 'users/follow_form', user: user
+
+    / .card.text-white.bg-secondary.mb-3
+      .card-header
+        | 自己紹介
+        i.fa.fa-address-card-o
+      .card-body.bg-light
+
+
+  .col-lg-7.text-center.align-center
+    .user_content
+      = render 'link_of_user', user: user
+      br
+    hr
+    p.card-text
+      | プロフィール：
+      = user.profile.present? ? br(user.profile) : '未設定です'
