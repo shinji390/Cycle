@@ -1,5 +1,9 @@
 - breadcrumb :mypage,@user
-= render 'user_profile', user: @user
-hr
-#all_posts
-  = render partial: 'post', locals: { posts: @posts }
+.row
+  .col-lg-4.text-center
+    = render 'user_profile', user: @user
+  .col-lg-8.text-center.align-center
+    .user_content
+      = render 'link_of_user', user: @user
+    = render 'post', posts: @posts
+  hr

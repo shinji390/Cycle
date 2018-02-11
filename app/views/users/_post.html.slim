@@ -1,28 +1,27 @@
-.page_nite.text-right
+.page_nite.text-right.my-2
   = render partial: 'shared/page', locals: { posts: posts }
 = paginate posts
-.row
-  - posts.each do |post|
-    .col-lg-4.col-sm-12.portfolio-item.text-center.mb-4
-      .card
-        = render 'shared/thumbnail', post: post
-        .card-body
-          h4.card-title = post.title
 
-          p.card-text
-            |
-            = br(index_postcontent_slice(post))
-            -if post.melody.present?
-              p = audio_tag(post.melody.url, :controls => true)
+- posts.each do |post|
+  .card.mb-4
+    = render 'shared/thumbnail', post: post
+    .card-body
+      h4.card-title = post.title
 
-          - if post.user == current_user
-            = render 'shared/btn_group', post: post
+      p.card-text
+        |
+        = br(index_postcontent_slice(post))
+        -if post.melody.present?
+          p = audio_tag(post.melody.url, :controls => true)
 
-          - else
-            .show_btn
-              = link_to 'Show', posts_path(post.user), class: 'btn btn-outline-info my-1'
+      - if post.user == current_user
+        = render 'shared/btn_group', post: post
 
-          .create_time.text-right.mt-2
-            small = simple_time(post.created_at)
-        .card-footer.text-white.likes
-          = render 'likes/like_btn', post: post
+      - else
+        .show_btn
+          = link_to 'Show', posts_path(post.user), class: 'btn btn-outline-info my-1'
+
+      .create_time.text-right.mt-2
+        small = simple_time(post.created_at)
+    .card-footer.text-white.likes
+      = render 'likes/like_btn', post: post
