@@ -3,8 +3,7 @@
   p.user_name = user.name
   hr
   p.card-text
-    | プロフィール：
-    = user.profile.present? ? br(user.profile) : '未設定です'
+    = user.profile.present? ? br(user.profile) : 'プロフィール：未設定です'
 
   .profile_btn.my-4
     - if current_user == user

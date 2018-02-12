@@ -1,17 +1,21 @@
 p
-  = link_to '投稿', user_path(user), class: "#{'user_current' if current_page?(user_path(user))}"
-  br
-  span.number_count = user.posts.count
+  = link_to user_path(user), class: "#{'user_current' if current_page?(user_path(user))}" do
+    | 投稿
+    
+    span.number_count = user.posts.count
 p
-  = link_to 'フォロー', followed_user_path(user), class: "#{'user_current' if current_page?(followed_user_path)}"
-  br
-  span.number_count = user.following.count
+  = link_to followed_user_path(user), class: "#{'user_current' if current_page?(followed_user_path)}" do
+    | フォロー
+    
+    span.number_count = user.following.count
 p
-  = link_to 'フォロワー', followers_user_path(user), class: "#{'user_current' if current_page?(followers_user_path)}"
-  br
-  span.number_count = user.followers.count
+  = link_to followers_user_path(user), class: "#{'user_current' if current_page?(followers_user_path)}" do
+    | フォロワー
+    
+    span.number_count = user.followers.count
 
 p
-  = link_to 'お気に入り', favorites_user_path(user), class: "#{'user_current' if current_page?(favorites_user_path)}"
-  br
-  span.number_count = user.likes.count
+  = link_to favorites_user_path(user), class: "#{'user_current' if current_page?(favorites_user_path)}" do
+    | お気に入り
+    
+    span.number_count = user.likes.count

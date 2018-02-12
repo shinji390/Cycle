@@ -15,7 +15,7 @@
 
     .field
       = f.label :profile
-      = f.text_area :profile, class: 'form-control', placeholder: '80文字以内'
+      = f.text_area :profile, class: 'form-control', placeholder: '150文字以内'
 
     .field
       = current_user.avatar.present? ? image_tag(current_user.avatar.url, class: 'rounded-circle') : gravatar_for(current_user, 100)

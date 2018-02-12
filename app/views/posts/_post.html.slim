@@ -28,7 +28,7 @@
           = render 'shared/btn_group', post: post
         - else
           .show_btn
-            a[href="/posts/#{post.id}", class='btn btn-outline-info my-1'] VIEW
+            a[href="/posts/#{post.id}", class='btn btn-outline-info my-1'] 詳しく見る
         .post_time.text-right.mt-2
           small = simple_time(post.created_at)
 

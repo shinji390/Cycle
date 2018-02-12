@@ -21,7 +21,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:twitter]
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
-  validates :profile, length: { maximum: 80 }, on: :update
+  validates :profile, length: { maximum: 150 }, on: :update
 
   # アバター
   mount_uploader :avatar, AvatarUploader

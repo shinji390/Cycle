@@ -8,7 +8,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
-  process resize_to_fill: [120, 120, gravity = 'Center']
+  process resize_to_fill: [100, 100, gravity = 'Center']
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
