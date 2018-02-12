@@ -12,9 +12,8 @@
   .user_content
     display: flex
     justify-content: space-around
-    background: rgba(0, 0, 0, 0.06)
     padding: 0.75rem 0 0.2rem 0
-    border: 1px solid rgba(0, 0, 0, 0.06)
+    margin-top: -2rem
     a
       &:hover
         text-decoration: none
@@ -92,4 +91,7 @@
 
   .follow_btn
     .btn-sm
-      width: 50%
+
+  @media screen and (max-width: 991px)
+    .user_content
+      margin-top: 0.75rem

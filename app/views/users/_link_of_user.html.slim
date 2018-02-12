@@ -1,5 +1,5 @@
 p
-  = link_to '投稿', user_path(user), class: "#{'user_current' if current_page?(current_user)}"
+  = link_to '投稿', user_path(user), class: "#{'user_current' if current_page?(user_path(user))}"
   br
   span.number_count = user.posts.count
 p

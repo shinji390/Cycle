@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def favorites
+    @posts = @user.like_posts
   end
 
   def followers

@@ -9,17 +9,17 @@
       h4.card-title = post.title
 
       p.card-text
-        |
-        = br(index_postcontent_slice(post))
         -if post.melody.present?
-          p = audio_tag(post.melody.url, :controls => true)
+          = audio_tag(post.melody.url, :controls => true)
+        |
+        = simple_format(h(post.content))
 
       - if post.user == current_user
         = render 'shared/btn_group', post: post
 
       - else
         .show_btn
-          = link_to 'Show', posts_path(post.user), class: 'btn btn-outline-info my-1'
+          = link_to '詳しく見る', posts_path(post.user), class: 'btn btn-outline-info my-1'
 
       .create_time.text-right.mt-2
         small = simple_time(post.created_at)

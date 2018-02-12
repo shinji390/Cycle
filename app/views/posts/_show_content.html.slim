@@ -1,7 +1,3 @@
-p.post-meta.mt-4
-  | 投稿時間：
-  = simple_time(post.created_at)
-
 - if post.melody.present?
   p = audio_tag(post.melody.url, :controls => true)
 
@@ -18,3 +14,7 @@ p = simple_format(h(post.content))
 / いいねボタン
 .icon_group.mt-4
   = render 'likes/like_btn', post: post
+p.post-meta.text-right
+  small
+    | 投稿時間：
+    = simple_time(post.created_at)

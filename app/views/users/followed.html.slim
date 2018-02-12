@@ -5,4 +5,7 @@
   .col-lg-8.text-center.align-center
     .user_content
       = render 'link_of_user', user: @user
+    .row
+      - @users.each do |user|
+        = render 'follow_list', user: user
   hr
