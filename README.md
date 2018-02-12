@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+歌詞がかける人と曲がかける人のマッチングアプリ
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##### 開発環境
+  * Mac OS
+  * Ruby version: 2.3.1
+  * Rails version: 5.1.1
+  * Database: Postgresql
+  * Bootstrap 4.0.0-beta.2
+---
+まだまだ作成途中です。
