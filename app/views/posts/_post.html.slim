@@ -29,10 +29,12 @@
         - else
           .show_btn
             a[href="/posts/#{post.id}", class='btn btn-outline-info my-1'] 詳しく見る
-        .post_time.text-right.mt-2
+
+        .tag_list.text-right.mt-2
+          - post.tag_list.each do |tag|
+            span = "##{tag}"
+        .post_time.text-right
           small = simple_time(post.created_at)
-
-
       .card-footer.text-white.likes
         / いいねボタン
         = render 'likes/like_btn', post: post
