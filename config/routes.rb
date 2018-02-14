@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 }
 
   root 'static_pages#index'
-  get 'top', to: 'static_pages#index'
   get 'about', to: 'static_pages#about'
+
   resources 'users', only: [:index, :show] do
     get 'favorites', on: :member
     get 'followers', on: :member
@@ -20,6 +20,11 @@ Rails.application.routes.draw do
     resources 'likes', only: [ :create, :destroy ]
     resources 'comments', only: [ :create, :edit, :update, :destroy ]
   end
+
+  get '/post/music', to: 'post_pages#music'
+  get '/post/video', to: 'post_pages#video'
+  get '/post/youtube', to: 'post_pages#youtube'
+  get '/post/liric', to: 'post_pages#liric'
 
   resources :relationships, only: [:create, :destroy]
 end
