@@ -27,5 +27,7 @@
 
             .create_time.text-right.mt-2
               small = simple_time(post.created_at)
+            .tag_list.text-right
+              = render 'shared/tag_list', tag_list: post.tag_list
           .card-footer.text-white.likes
             = render 'likes/like_btn', post: post

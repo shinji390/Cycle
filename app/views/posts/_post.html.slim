@@ -17,24 +17,21 @@
           |
           = post.title
 
-        / youtubeURL削除
-
-        p.contents = br(index_postcontent_slice(post))
         / 音楽ファイル
         -if post.melody.present?
           p = audio_tag(post.melody.url, controls: true)
 
-        - if post.user == current_user #削除、編集ボタン分岐
-          = render 'shared/btn_group', post: post
-        - else
-          .show_btn
-            a[href="/posts/#{post.id}", class='btn btn-outline-info my-1'] 詳しく見る
+        p.contents = br(index_postcontent_slice(post))
 
-        .tag_list.text-right.mt-2
-          - post.tag_list.each do |tag|
-            span = "##{tag}"
-        .post_time.text-right
+        .show_btn
+          a[href="/posts/#{post.id}", class='btn btn-outline-info my-1'] 詳しく見る
+
+        .post_time.text-right.mt-2
           small = simple_time(post.created_at)
+
+        .tag_list.text-right
+          = render 'shared/tag_list', tag_list: post.tag_list
+
       .card-footer.text-white.likes
         / いいねボタン
         = render 'likes/like_btn', post: post

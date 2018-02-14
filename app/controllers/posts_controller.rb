@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    tag_add(@post)
     if @post.save
       flash[:notice] = '投稿しました'
       redirect_to posts_path
@@ -46,11 +47,23 @@ class PostsController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:title, :content, :video, :melody, :url, :tag_list)
+    params.require(:post).permit(:title, :content, :video, :melody, :url)
   end
 
   def post_id_params
     @post = Post.find(params[:id])
+  end
+
+  def tag_add(post)
+    if post.melody.present?
+      post.tag_list.add('Melody')
+    elsif post.video.present?
+      post.tag_list.add('Video')
+    elsif post.url.present?
+      post.tag_list.add('Youtube')
+    else
+      post.tag_list.add('Lyric')
+    end
   end
 
 end

@@ -32,10 +32,6 @@
     = f.label :content, '本文or歌詞', class: 'check_icon'
     = f.text_area :content, class: 'form-control mb-4'
 
-
-    = f.label :post, :tag_list
-    = f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control","data-role" => "tagsinput"
-
     .new_post_btn.text-center
       = f.submit '投稿する', class: 'btn btn-info w-100 my-4'
       = link_to '戻る', :back, class: 'btn btn-outline-secondary w-100'
