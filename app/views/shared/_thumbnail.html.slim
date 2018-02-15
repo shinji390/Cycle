@@ -8,7 +8,7 @@
       = video_tag(post.video_url,:controls => true,
         class: 'embed-responsive-item card-img-top')
 
-- elsif controller.controller_name == 'users' && action_name == 'show' || controller.controller_name == 'users' && action_name == 'favorites'
+- elsif controller.controller_name == 'users' && action_name == 'show' || controller.controller_name == 'users' && action_name == 'favorites' || controller.controller_name == 'post_pages'
   .img_link
     - if post.url.present?
       .embed-responsive.embed-responsive-16by9

@@ -57,10 +57,8 @@ private
   def tag_add(post)
     if post.melody.present?
       post.tag_list.add('Melody')
-    elsif post.video.present?
+    elsif post.video.present? || post.url.present?
       post.tag_list.add('Video')
-    elsif post.url.present?
-      post.tag_list.add('Youtube')
     else
       post.tag_list.add('Lyric')
     end

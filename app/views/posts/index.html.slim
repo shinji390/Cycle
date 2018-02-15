@@ -47,11 +47,9 @@
     li.nav-item
       = link_to '#Melody', post_music_path, class: 'nav-link'
     li.nav-item
-      = link_to '#Video', post_music_path, class: 'nav-link'
+      = link_to '#Video', post_video_path, class: 'nav-link'
     li.nav-item
-      = link_to '#Youtube', post_music_path, class: 'nav-link'
-    li.nav-item
-      = link_to '#Liric', post_music_path, class: 'nav-link'
+      = link_to '#Liric', post_liric_path, class: 'nav-link'
 
   #all_posts
     = render partial: "post", locals: { posts: @posts }

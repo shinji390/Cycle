@@ -1,0 +1,28 @@
+.row.justify-content-center
+  - posts.each do |post|
+    .col-lg-9.mb-4
+      .card.mb-4.mt-4
+        .card-header
+          = render 'shared/user_avatar', post: post
+        = render 'shared/thumbnail', post: post
+        .card-body
+          h4.card-title.mb-4 = post.title
+
+          p.card-text
+            -if post.melody.present?
+              = audio_tag(post.melody.url, :controls => true)
+            |
+            = simple_format(h(post.content))
+
+          .show_btn
+            = link_to '詳しく見る', posts_path(post.user), class: 'btn btn-outline-info my-1'
+
+          .create_time.text-right.mt-2
+            small = simple_time(post.created_at)
+          .tag_list.text-right
+            = render 'shared/tag_list', tag_list: post.tag_list
+
+        .card-footer.text-white.likes
+          = render 'likes/like_btn', post: post
+
+/ = paginate posts

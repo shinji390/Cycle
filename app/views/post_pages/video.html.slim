@@ -1,6 +1,6 @@
 .jumbotron.jumbotron-fluid
   .container
-    h1.text-white.text-right Music
+    h1.text-white.text-right.pages_title Video
 
 
 .container.posts_content#nav_item
@@ -12,9 +12,7 @@
     li.nav-item
       = link_to '#Video', post_video_path, class: 'nav-link active'
     li.nav-item
-      = link_to '#Youtube', post_youtube_path, class: 'nav-link'
-    li.nav-item
       = link_to '#Liric', post_liric_path, class: 'nav-link'
 
   #all_posts
-    / = render partial: "posts/post", locals: { posts: @posts }
+    = render partial: "pages_post", locals: { posts: @posts }

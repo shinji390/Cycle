@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#index'
   get 'about', to: 'static_pages#about'
+  get 'top', to: 'static_pages#top'
 
   resources 'users', only: [:index, :show] do
     get 'favorites', on: :member
@@ -23,7 +24,6 @@ Rails.application.routes.draw do
 
   get '/post/music', to: 'post_pages#music'
   get '/post/video', to: 'post_pages#video'
-  get '/post/youtube', to: 'post_pages#youtube'
   get '/post/liric', to: 'post_pages#liric'
 
   resources :relationships, only: [:create, :destroy]
