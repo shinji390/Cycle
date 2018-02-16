@@ -20,6 +20,11 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
           method: :get do
             i.fa.fa-user-o
             | マイページ
+        li.nav-item
+          = link_to users_path, class: "nav-link #{'current' if current_page?(users_path)}",
+          method: :get do
+            i.fa.fa-users
+            | 全てのユーザー
 
         li.nav-item.dropdown[class="#{'current' if request.path == edit_user_registration_path(current_user)}"]
           a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="##"
@@ -30,9 +35,9 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
             = link_to 'プロフィール編集',  edit_user_registration_path(current_user), class: 'dropdown-item di-1'
             = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item di-2'
 
-    - if user_signed_in?
-      form.form-inline.my-2.my-lg-0
-        input.form-control.mr-sm-2 aria-label="検索..." placeholder="検索..." type="search" /
-        button.btn.btn-outline-success.my-2.my-sm-0 type="submit"  検索
-
-    span[id="slide-line"]
+    / - if user_signed_in?
+    /   form.form-inline.my-2.my-lg-0
+    /     input.form-control.mr-sm-2 aria-label="検索..." placeholder="検索..." type="search" /
+    /     button.btn.btn-outline-success.my-2.my-sm-0 type="submit"  検索
+    /
+    / span[id="slide-line"]
