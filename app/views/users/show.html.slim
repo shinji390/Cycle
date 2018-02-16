@@ -2,8 +2,8 @@
 .row
   .col-lg-4.text-center
     = render 'user_profile', user: @user
-  .col-lg-8.text-center.align-center
-    .user_content
+  .col-lg-8.align-center
+    .user_content.text-center
       = render 'link_of_user', user: @user
     = render 'post', posts: @posts
   hr

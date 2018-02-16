@@ -4,11 +4,11 @@
 
 
 .container.posts_content#nav_item
-  ul.nav.nav-tabs
+  ul.nav.nav-tabs.post_link_tab
     li.nav-item
       = link_to 'All Music', posts_path, class: 'nav-link'
     li.nav-item
-      = link_to '#Melody', post_music_path, class: 'nav-link active'
+      = link_to '#Melody', post_music_path, class: 'nav-link active current_page'
     li.nav-item
       = link_to '#Video', post_video_path, class: 'nav-link'
     li.nav-item

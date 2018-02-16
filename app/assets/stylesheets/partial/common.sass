@@ -38,6 +38,12 @@ audio
 .fa-trash
   color: rgb(213, 26, 59)
 
+.file_icon
+  &::before
+    content: "\f07c"
+    font-family: FontAwesome
+    margin-left: 0.25rem
+
 .separate
   align-self: center
   font-size: 20px
@@ -53,6 +59,12 @@ audio
   span
     color: #249f80
 
+.follow_icon
+  &::after
+    content: "\f2bc"
+    font-family: FontAwesome
+    margin-left: 0.25rem
+
 p.contents
   font-size: 16px
 #users,#registrations,#posts,#passwords, #sessions, #post_pages
@@ -61,10 +73,11 @@ p.contents
   height: auto !important
   height: 100%
   position: relative
-  padding-bottom: 320px
+  padding-bottom: 200px
   padding-top: 64px
   background: #fafafa
-
+  .padding_add
+    padding-bottom: 100px
   .nav-item
     margin-right: 2rem !important
   .btn-lg

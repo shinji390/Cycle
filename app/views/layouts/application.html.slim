@@ -7,8 +7,8 @@ html [lang="ja"]
     = javascript_include_tag 'application'
     / = favicon_link_tag()
 
-  body [id="#{controller.controller_name}"]
-    div [class="#{action_name}-wrapper" id="page-top"]
+  body [id="#{controller.controller_name}" class="wrapper"]
+    div [class="#{action_name}-wrapper padding_add" id="page-top"]
       = render 'layouts/header'
       = render 'shared/flash'
       .container

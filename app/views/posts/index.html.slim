@@ -37,19 +37,16 @@
         .card-body.bg-light
           h5.card-title カードタイトル
           p.card-text カードのタイトルに基づいてカードの内容の大部分を占める簡単なサンプルテキスト。
-
-  hr#nav_item
-
-.container-fluid.posts_content
-  ul.nav.nav-tabs
+  ul.nav.nav-tabs.my-4.post_link_tab
     li.nav-item
-      = link_to 'All Music', posts_path, class: 'nav-link active'
+      = link_to 'All Music', posts_path, class: 'nav-link active current_page'
     li.nav-item
       = link_to '#Melody', post_music_path, class: 'nav-link'
     li.nav-item
       = link_to '#Video', post_video_path, class: 'nav-link'
     li.nav-item
       = link_to '#Liric', post_liric_path, class: 'nav-link'
+.container-fluid.posts_content
 
   #all_posts
     = render partial: "post", locals: { posts: @posts }

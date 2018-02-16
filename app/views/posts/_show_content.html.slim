@@ -1,20 +1,42 @@
 - if post.melody.present?
   p = audio_tag(post.melody.url, :controls => true)
 
-p = simple_format(h(post.content))
+= simple_format(h(post.content))
 
-/ 削除・編集ボタン
-- if post.user == current_user
-  .show-wrap-btn
-    = link_to 'EDIT', edit_post_path(post.id) , class:'btn btn-sm btn-outline-warning mr-1'
-    = link_to 'DELETE' ,post_path(post.id), class:'btn btn-sm btn-outline-danger',
-    data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
-    title: "削除の確認", method: :delete
 
 / いいねボタン
-.icon_group.mt-4
-  = render 'likes/like_btn', post: post
-p.post-meta.text-right
+.icon_group.my-2#top_page
+  .like_btn
+    - unless post.user == current_user #いいねボタン分岐
+      .[id="like-of-#{post.id}"]
+        = render 'likes/like_link', post: post
+      .views
+        i.fa.fa-eye.eye_icon.ml-2[data-toggle="tooltip", data-title="閲覧数"]
+          | 0
+      .comments
+        i.fa.fa-commenting.comment_icon.ml-2[data-toggle="tooltip", data-title="コメント数"]
+          = post.comments.count.to_s
+
+
+    - else
+      i.fa.fa-star.star-color[data-toggle="tooltip", data-title="お気に入り数"]
+        = post.likes.count.to_s
+      i.fa.fa-eye.eye_icon.ml-2[data-toggle="tooltip", data-title="閲覧数"]
+        | 0
+      i.fa.fa-commenting.comment_icon.ml-2[data-toggle="tooltip", data-title="コメント数"]
+        = post.comments.count
+
+    a [href="#comment_create" class="ml-auto comment_link"] コメントする
+
+.post-meta.d-flex.justify-content-end
   small
     | 投稿時間：
     = simple_time(post.created_at)
+  - if post.user == current_user
+    .post_user_btn.text-right
+      = link_to edit_post_path(post.id) , class:'mr-2' do
+        i.fa.fa-edit
+      = link_to post_path(post.id), class:'',
+      data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
+      title: "削除の確認", method: :delete do
+        i.fa.fa-trash

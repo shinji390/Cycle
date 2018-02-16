@@ -33,9 +33,8 @@
           | コメント一覧
 
 
-        #comment_create
-          div [id="comment-of-#{@post.id}"]
-            = render 'comments/comment_links', post: @post
+        div [id="comment-of-#{@post.id}"]
+          = render 'comments/comment_links', post: @post
 
     .col-lg-4
       .card

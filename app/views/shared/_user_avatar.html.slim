@@ -3,14 +3,15 @@
   = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'rounded-circle avatar_resize') : gravatar_for(post.user, 50)
 p.user_name = post.user.name
 
-- if post.user == current_user
-  .post_user_btn
-    = link_to edit_post_path(post.id) , class:'mr-1' do
-      i.fa.fa-edit
-    = link_to post_path(post.id), class:'',
-    data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
-    title: "削除の確認", method: :delete do
-      i.fa.fa-trash
+- unless controller.controller_name == 'posts' && action_name == 'show' || controller.controller_name == 'comments'
+  - if post.user == current_user
+    .post_user_btn
+      = link_to edit_post_path(post.id) , class:'mr-1' do
+        i.fa.fa-edit
+      = link_to post_path(post.id), class:'',
+      data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
+      title: "削除の確認", method: :delete do
+        i.fa.fa-trash
 
-- else
-  = render 'users/follow_form', user: post.user
+  - else
+    = render 'users/follow_form', user: post.user

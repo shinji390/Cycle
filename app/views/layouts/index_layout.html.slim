@@ -8,7 +8,7 @@ html [lang="ja"]
     / = favicon_link_tag()
 
   body [id="#{controller.controller_name}"]
-    div [class="#{action_name}-wrapper" id="page-top"]
+    div [class="#{action_name}-wrapper padding_add" id="page-top"]
       = render 'layouts/header'
       = render 'shared/flash'
       == breadcrumbs separator: "&nbsp;/&nbsp;", style: :bootstrap
