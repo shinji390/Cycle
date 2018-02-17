@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/charlotte-ruby/impressionist.git
+  revision: 9da66fe1e63710d0020194c3021e806be762b800
+  specs:
+    impressionist (1.6.0)
+      nokogiri (~> 1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -323,6 +330,7 @@ DEPENDENCIES
   hirb
   hirb-unicode
   html2slim
+  impressionist!
   jbuilder (~> 2.5)
   jquery-rails
   jquery-ui-rails

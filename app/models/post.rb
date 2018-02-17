@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  is_impressionable counter_cache: true
   acts_as_taggable
   belongs_to :user
   has_many :likes, dependent: :destroy
