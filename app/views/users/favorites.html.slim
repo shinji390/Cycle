@@ -31,3 +31,5 @@
               = render 'shared/tag_list', tag_list: post.tag_list
           .card-footer.text-white.likes
             = render 'likes/like_btn', post: post
+
+= paginate @posts

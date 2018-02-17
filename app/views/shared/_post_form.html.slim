@@ -14,15 +14,13 @@
     #pills-tabContent.tab-content
       #pills-home.tab-pane.fade.show.active aria-labelledby="pills-home-tab" role="tabpanel"
         |
-        = f.label :melody, class: 'btn btn-info text-white file_icon badge-pill'
-          | 音声ファイルを選択【mp3,wav】
-          = f.file_field :melody, id: 'post_melody', style: 'display: none'
+        = f.label :melody,'音声ファイルを選択【mp3,wav】'
+        = f.file_field :melody, id: 'post_melody', class: 'form-control-file'
 
       #pills-profile.tab-pane.fade aria-labelledby="pills-profile-tab" role="tabpanel"
         |
-        = f.label :melody, class: 'btn btn-info text-white file_icon badge-pill'
-          | 動画ファイルを選択【mp4,MOV,wmv】
-          = f.file_field :melody, id: 'post_melody', style: 'display: none'
+        = f.label :video, '動画ファイルを選択【mp4,MOV,wmv】'
+        = f.file_field :video, id: 'post_video', class: 'form-control-file'
 
       #pills-url.tab-pane.fade aria-labelledby="pills-url-tab" role="tabpanel"
         |

@@ -38,7 +38,8 @@
   }
   .navbar-brand {
     color: $yellow;
-    font-family: 'Kaushan Script', cursive;
+    font-family: 'Indie Flower', cursive;
+    text-transform: none;
     &.active,
     &:active,
     &:focus,
@@ -185,7 +186,7 @@ header.masthead {
       padding-bottom: 0;
       background-color: $gray-900;
       .navbar-brand {
-        font-size: 1.25em;
+        font-size: 1.7em;
         padding: 12px 0;
       }
     }

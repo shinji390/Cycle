@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   layout 'index_layout', only: [ :index, :show ]
 
-  PER = 9
+  PER = 25
 
   def index
     @posts = Post.order(created_at: :desc).page(params[:page]).per(PER)
