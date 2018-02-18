@@ -69,8 +69,10 @@
             p.mb-1
               |
               = "第#{i}位"
-              = link_to "#{post.title}", post_path(post), class: 'ml-1'
-
+              button type="button" class="btn btn-link modal_btn" data-toggle="modal" data-target="##{i}"
+                |
+                = post.title
+            = render 'post_modal', post: post, count: i
 
   .category.mt-4
     span.badge.badge-pill.badge-primary カテゴリー

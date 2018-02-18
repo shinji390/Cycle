@@ -5,7 +5,7 @@
   .col-lg-8.text-center.align-center
     .user_content
       = render 'link_of_user', user: @user
-    .user_favorites
+    .user_favorites.text-left
       - @posts.each do |post|
         .card.mb-4
           = render 'shared/thumbnail', post: post

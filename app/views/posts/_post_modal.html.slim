@@ -1,0 +1,36 @@
+div [id="#{count}"class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog.modal-lg[role="document"]
+    .modal-content
+      .modal-header.d-flex
+        h4#exampleModalLabel.modal-title
+          = link_to user_path(post.user), class: 'avatar',
+          :data => { :toggle=>'tooltip', :title=>'投稿者ページへ' } do
+            = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'rounded-circle avatar_resize') : gravatar_for(post.user, 50)
+        p.user_name = post.user.name
+        button.close[data-dismiss="modal" aria-label="閉じる"]
+          span[aria-hidden="true"]
+            | ×
+      .modal-body
+        h5.modal_title
+          |
+          = post.title
+        .img_link
+          - if post.url.present?
+            .embed-responsive.embed-responsive-16by9
+              = thumbnail_youtube(post)
+          - elsif post.video.present?
+            .embed-responsive.embed-responsive-16by9.video_wrap
+              = video_tag(post.video_url,:controls => true,
+                class: 'embed-responsive-item card-img-top')
+          - elsif post.melody.present?
+            = audio_tag(post.melody.url, controls: true)
+        p.modal_content
+          = simple_format(h(post.content))
+        p [style="text-align: center"]
+          / = image_tag(post.image.url)
+
+        = render 'likes/like_btn', post: post
+      .modal-footer
+        = link_to '詳しく見る', post_path(post.id), class: 'btn btn-info w-50'
+        button.btn.btn-outline-secondary.w-50[type="button" data-dismiss="modal"]
+          | 閉じる
