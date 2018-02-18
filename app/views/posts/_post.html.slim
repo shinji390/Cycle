@@ -2,9 +2,9 @@
   = render partial: 'shared/page', locals: { posts: posts }
 
 
-.card-columns.mt-2
+.card-columns.mt-2#effect2
   - posts.each do |post|
-    .card.text-center.mb-4
+    .card.text-center.mb-4.fadein
 
       .card-header
         = render 'shared/user_avatar', post: post
