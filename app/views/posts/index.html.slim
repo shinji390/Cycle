@@ -19,6 +19,18 @@
   .row
     .col-lg-4
       .card.text-white.bg-info.mb-3
+        .card-header 閲覧数ランキング
+        .card-body.bg-light.py-1
+          - @ranking.each.with_index(1) do |post, i|
+            p.mb-1
+              |
+              = "第#{i}位"
+              button type="button" class="btn btn-link modal_btn" data-toggle="modal" data-target="##{i}"
+                |
+                = post.title
+            = render 'post_modal', post: post, count: i
+    .col-lg-4.align-self-center
+      .card.text-white.bg-warning.mb-3
         .card-header 人気の投稿
         .card-body.bg-light
           - @most_liked.each do |post|
@@ -26,7 +38,7 @@
               .col-xs-4.text-center.ml-4
                 = link_to user_path(post.user), class: 'avatar',
                 :data => { :toggle=>'tooltip', :title=>'投稿者ページへ' } do
-                  = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'rounded-circle top_avatar') : gravatar_for(post.user, 40)
+                  = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'rounded-circle top_avatar') : gravatar_for(post.user, 50)
                 p.user_name.mb-0 = post.user.name
               .col-xs-8
                 = link_to "#{post.title}", post_path(post), class: 'link_text ml-2'
@@ -39,7 +51,7 @@
               .tag_list.ml-auto
                 = render 'shared/tag_list', tag_list: post.tag_list
 
-    .col-lg-4
+    .col-lg-4.align-self-center
       .card.bg-danger.mb-3
         .card-header.text-white 閲覧数が多い投稿
         .card-body.bg-light
@@ -48,7 +60,7 @@
               .col-xs-4.text-center.ml-4
                 = link_to user_path(post.user), class: 'avatar',
                 :data => { :toggle=>'tooltip', :title=>'投稿者ページへ' } do
-                  = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'rounded-circle top_avatar') : gravatar_for(post.user, 40)
+                  = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'rounded-circle top_avatar') : gravatar_for(post.user, 50)
                 p.user_name.mb-0 = post.user.name
               .col-xs-8
                 = link_to "#{post.title}", post_path(post), class: 'link_text ml-2'
@@ -61,18 +73,6 @@
               .tag_list.ml-auto
                 = render 'shared/tag_list', tag_list: post.tag_list
 
-    .col-lg-4
-      .card.text-white.bg-warning.mb-3
-        .card-header 閲覧数ランキング
-        .card-body.bg-light
-          - @ranking.each.with_index(1) do |post, i|
-            p.mb-1
-              |
-              = "第#{i}位"
-              button type="button" class="btn btn-link modal_btn" data-toggle="modal" data-target="##{i}"
-                |
-                = post.title
-            = render 'post_modal', post: post, count: i
 
   .category.mt-4
     span.badge.badge-pill.badge-primary カテゴリー

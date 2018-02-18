@@ -31,6 +31,6 @@ div [id="#{count}"class="modal fade" tabindex="-1" role="dialog" aria-labelledby
 
         = render 'likes/like_btn', post: post
       .modal-footer
-        = link_to '詳しく見る', post_path(post.id), class: 'btn btn-info w-50'
-        button.btn.btn-outline-secondary.w-50[type="button" data-dismiss="modal"]
+        = link_to '詳しく見る', post_path(post.id), class: 'btn btn-info'
+        button.btn.btn-outline-secondary[type="button" data-dismiss="modal"]
           | 閉じる

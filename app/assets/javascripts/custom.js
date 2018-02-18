@@ -16,16 +16,13 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });
 
-// fadein
-$(function(){
-    $(window).scroll(function (){
-        $('.fadein').each(function(){
-            var elemPos = $(this).offset().top;
-            var scroll = $(window).scrollTop();
-            var windowHeight = $(window).height();
-            if (scroll > elemPos - windowHeight + 200){
-                $(this).addClass('scrollin');
-            }
-        });
-    });
+// inview
+$(function() {
+  $('.fadein').on('inview', function(event, isInView, visiblePartX, visiblePartY) {
+    if (isInView) {
+      $(this).stop().addClass('scrollin');
+    } else {
+      $(this).stop().removeClass('scrollin');
+    }
+  });
 });
