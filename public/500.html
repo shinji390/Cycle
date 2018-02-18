@@ -1,66 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>エラーが発生しました(500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
-
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    html{
+      height: 100%
+    }
+    body{
+      min-height: 100%
+      height: auto !important;
+      position: relative;
+      /* background: rgb(198, 200, 205); */
+      padding: 90px 0 150px 0;
+      height: 100%;
+    }
+    img{
+      max-width: 100%;
+    }
+    .navbar{
+      padding: 1.5rem;
+    }
+    .container{
+      margin-top: 3.5rem;
+      text-align: center;
+    }
+    .dialog {
+      align-self: center;
+    }
+    .title {
+      font-size: 4rem;
+      color: #637282;
+      margin-bottom: 1rem;
+    }
+    .contents {
+      margin-top: 3rem;
+    }
+    #footer{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      /* border-top: 1px solid rgb(132, 135, 133); */
+      padding-top: 2rem;
+      height: 100px;
+    }
   </style>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 </head>
 
 <body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+  <header>
+   <!-- トップ固定ナビゲーション -->
+   <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+     <a class="navbar-brand" href="/">Cycle</a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header" aria-expanded="false" aria-label="ナビゲーションの切替">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+
+   </nav>
+ </header>
+  <!-- This file lives in public/404.html -->
+  <div class="container">
+    <div class="row justify-content-center contents">
+      <div class="col-lg-9 dialog">
+        <div class="message card card-body bg-light p-5">
+          <h1 class="title">一時的なエラーが発生しました。(500)</h1>
+          <p>ご不便をおかけして申し訳ございません。<br>正常にご覧いただけるよう、解決に取り組んでおります。</p>
+          <p>しばらく時間をおいて、もう一度アクセスしてください。</p>
+          <p><a href="/" class="btn btn-primary">ホームへ戻る</a></p>
+      </div>
+      </div>
+
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+  <footer id="footer" class="text-center">
+    <p class="lead">Cycle</p>
+  </footer>
 </body>
 </html>

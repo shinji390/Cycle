@@ -79,8 +79,9 @@
         font-size: 16px
 
   .posts_content
-    padding-left: 30px
-    padding-right: 30px
+    padding-left: 60px
+    padding-right: 60px
+    max-width: 1500px
 
   .user_avatar
     display: flex
@@ -153,6 +154,10 @@
       align-self: center
       margin-left: 0.7rem
 
+  @media screen and (max-width: 900px)
+    .posts_content
+      padding-right: 20px
+      padding-left: 20px
   @media screen and (min-width: 576px) and (max-width: 991px)
     .card-columns
       column-count: 2
