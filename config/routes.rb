@@ -27,4 +27,9 @@ Rails.application.routes.draw do
   get '/post/liric', to: 'post_pages#liric'
 
   resources :relationships, only: [:create, :destroy]
+
+  resources :conversations do
+    resources :messages
+  end
+
 end

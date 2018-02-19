@@ -2,7 +2,7 @@
   = render partial: 'shared/page', locals: { posts: posts }
 
 
-.card-columns.mt-2#effect2
+.card-columns.mt-2
   - posts.each do |post|
     .card.text-center.mb-4.fadein
 
@@ -33,7 +33,6 @@
           = render 'shared/tag_list', tag_list: post.tag_list
 
       .card-footer.text-white.likes
-        / いいねボタン
         = render 'likes/like_btn', post: post
 
 = paginate posts

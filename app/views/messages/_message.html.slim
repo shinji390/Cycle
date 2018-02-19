@@ -1,0 +1,9 @@
+
+.header
+  strong
+    = user.name
+  = simple_time(message.created_at)
+.list
+  .item
+    i.right.triangle.icon
+    = message.body

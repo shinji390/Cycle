@@ -25,10 +25,11 @@
             p.mb-1
               |
               = "第#{i}位"
-              button type="button" class="btn btn-link modal_btn" data-toggle="modal" data-target="##{i}"
-                |
-                = post.title
-            = render 'post_modal', post: post, count: i
+              = link_to "#{post.title}", post_path(post), class: 'modal_btn'
+              / button type="button" class="btn btn-link modal_btn" data-toggle="modal" data-target="##{i}"
+              /   |
+              /   = post.title
+              / = render 'post_modal', post: post, count: i
     .col-lg-4.align-self-center
       .card.text-white.bg-warning.mb-3
         .card-header 人気の投稿
@@ -87,5 +88,4 @@
         = link_to '#Liric', post_liric_path, class: 'nav-link'
 
 .container-fluid.posts_content
-  #all_posts
-    = render partial: "post", locals: { posts: @posts }
+  = render "post", posts: @posts
