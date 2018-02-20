@@ -20,14 +20,14 @@
               p
                 | フォロー
                 br
-                | 0
+                = user.following.count
               p.border_add
 
               p
                 | フォロワー
                 br
-                | 0
+                = user.followers.count
 
             = render 'follow_form', user: user
             - unless user.id == current_user.id
-              = link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post
+              = link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post, class: 'btn btn-sm btn-info mt-2'

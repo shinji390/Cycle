@@ -1,15 +1,18 @@
-- if @over_ten
-  = link_to '以前のメッセージ', '?m=all'
+.row.justify-content-center
+  .col-lg-10
+    - if @over_ten
+      = link_to '以前のメッセージ', '?m=all'
 
-#message.ui.segment
-  - @messages.each do |message|
-    - if message.body
-      - user = User.find(message.user_id)
-      = render 'message', message: message, user: user
+    #message.ui.segment
+      - @messages.each do |message|
+        - if message.body
+          = render 'message', message: message
 
-= form_with(model: [@conversation, @message]) do |f|
-  .field
-    = f.text_area :body, class: "form-control", id: 'message_field'
-  = f.text_field :user_id, value: current_user.id, type: "hidden"
-  div
-    = f.submit "メッセージを送る"
+    hr
+    .message_area
+      = form_with(model: [@conversation, @message]) do |f|
+        .field
+          = f.text_area :body, class: "form-control", id: 'message_field', placeholder: 'メッセージを入力'
+        = f.text_field :user_id, value: current_user.id, type: "hidden"
+        div.text-right
+          = f.submit "メッセージを送る", class: 'btn btn-info'

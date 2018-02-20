@@ -1,10 +1,11 @@
-table.table.table-hover
-  thead
-    h2 メッセージ
-
-  tbody
-  - @conversations.each do |conversation|
-    td
-      - if conversation.target_user(current_user).present?
-        = link_to conversation.target_user(current_user).name, conversation_messages_path(conversation)
-        
+.row.justify-content-center.all_messages
+  .col-lg-9
+    .title-wrap
+      h2.message_title Message
+    .user_message_link
+      - @conversations.each do |conversation|
+        - if conversation.target_user(current_user).present?
+          = link_to conversation_messages_path(conversation), class: 'd-block message-link' do
+            = conversation.target_user(current_user).avatar.present? ? image_tag(conversation.target_user(current_user).avatar.url, class: 'rounded-circle avatar_resize') : gravatar_for(conversation.target_user(current_user), 50)
+            span.ml-2 = conversation.target_user(current_user).name
+          hr
