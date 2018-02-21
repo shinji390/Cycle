@@ -8,9 +8,10 @@
             i.fa.fa-television.ml-1
 
         .col-md-4
-          p.text-uppercase.mb-0.text-white
-            | お問い合わせ
-            i.fa.fa-paper-plane.ml-1
+          p.text-uppercase.mb-0
+            = link_to  new_contact_path, class: 'text-white' do
+              | お問い合わせ
+              i.fa.fa-paper-plane.ml-1
 
         .col-md-4.sns_btn
           p.text-uppercase.text-white Around the Web

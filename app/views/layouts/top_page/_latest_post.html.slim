@@ -1,0 +1,34 @@
+section#latest
+  .container
+    .row
+      .col-lg-12.text-center
+        h2.section-heading.text-uppercase.text-white.mb-4
+          | Latest Post
+
+    .row.justify-content-center
+      - @posts.each do |post|
+        .col-lg-4
+          .card.mb-4.box-shadow
+            .card-header.d-flex
+              = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'rounded-circle avatar_resize') : gravatar_for(post.user, 50)
+              p.user_name.mb-0.align-self-center.ml-2 = post.user.name
+            = render 'shared/thumbnail', post: post
+            .card-body
+              h3.like_wrap
+                |
+                = post.title
+
+              / 音楽ファイル
+              -if post.melody.present?
+                p = audio_tag(post.melody.url, controls: true)
+
+              / p.contents = br(index_postcontent_slice(post))
+
+              button type="button" class="btn btn-success modal_btn" data-toggle="modal" data-target="##{post.id}"
+                | view
+              = render 'posts/post_modal', post: post, count: post.id
+              .post_time.text-right.mt-2
+                small = simple_time(post.created_at)
+
+              .tag_list.text-right
+                = render 'shared/tag_list', tag_list: post.tag_list

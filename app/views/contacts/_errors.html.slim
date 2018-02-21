@@ -1,0 +1,8 @@
+- if @contact.errors.any?
+  #error_explanation.alert.alert-danger
+    h4.alert-heading
+      = pluralize(@contact.errors.count, "件のエラーがあります")
+    hr
+    ul
+      - @contact.errors.full_messages.each do |msg|
+        li = msg

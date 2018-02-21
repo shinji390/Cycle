@@ -12,6 +12,7 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { maximum: 3000 }
   validates :url, format: { with: /https:\/\/www.youtube.com\/watch\?v=(.+)/ }, allow_blank: true
 
+  default_scope -> { order(created_at: :desc) }
   # 音楽ファイル
   mount_uploader :melody, MusicUploader
   # 動画ファイル

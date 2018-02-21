@@ -23,13 +23,12 @@
         .card-body.bg-light.py-1
           - @ranking.each.with_index(1) do |post, i|
             p.mb-1
-              |
               = "第#{i}位"
-              button type="button" class="btn btn-link modal_btn" data-toggle="modal" data-target="##{i}"
-                |
+              |
+              button type="button" class="btn btn-link modal_btn pt-0" data-toggle="modal" data-target="##{i}"
                 = post.title
-              = render 'post_modal', post: post, count: i
-    .col-lg-4.align-self-center
+            = render 'post_modal', post: post, count: i
+    .col-lg-4
       .card.text-white.bg-warning.mb-3
         .card-header 人気の投稿
         .card-body.bg-light
@@ -51,7 +50,7 @@
               .tag_list.ml-auto
                 = render 'shared/tag_list', tag_list: post.tag_list
 
-    .col-lg-4.align-self-center
+    .col-lg-4
       .card.bg-danger.mb-3
         .card-header.text-white 閲覧数が多い投稿
         .card-body.bg-light

@@ -1,0 +1,10 @@
+= form_with(model: @contact, url: confirm_contacts_path, local: true) do |f|
+  .form-group
+    = f.label :name ,'お名前', class: ''
+    = f.text_field :name, class: 'form-control'
+    = f.label :email, 'メールアドレス', class: ''
+    = f.text_field :email, class: 'form-control'
+    = f.label :content, 'お問い合わせ内容', class: ''
+    = f.text_area :content, class: 'form-control contact_area'
+    = f.submit '確認画面へ', class: 'btn btn-info w-100 mt-4'
+    = link_to '戻る', :back, class: 'btn btn-outline-secondary w-100'

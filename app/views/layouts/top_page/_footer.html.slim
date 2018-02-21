@@ -6,11 +6,11 @@ section#top_footer
           | &copy;Cycle
     .row.justify-content-center
       .col-md-8.sns_btn
-        p.text-uppercase.text-white
-        ul.list-inline.mb-0
-          li.list-inline-item
-            a.btn.btn-outline-light.btn-social.text-center.rounded-circle href="#"
-              i.fa.fa-fw.fa-facebook
-          li.list-inline-item
-            a.btn.btn-outline-light.btn-social.text-center.rounded-circle href="#"
-              i.fa.fa-fw.fa-google-plus
+        p.text-uppercase.mb-0
+          = link_to  new_contact_path, class: 'text-white' do
+            | お問い合わせ
+            i.fa.fa-paper-plane.ml-1
+        p.text-uppercase.mb-0
+          = link_to  new_contact_path, class: 'text-white' do
+            | このサイトについて
+            i.fa.fa-paper-plane.ml-1

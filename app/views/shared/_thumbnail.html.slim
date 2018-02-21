@@ -28,4 +28,6 @@
         = video_tag(post.video_url,:controls => true,
           class: 'embed-responsive-item card-img-top')
     - elsif post.melody.present?
-      = image_tag('sample3.jpg', class: 'card-img-top')
+      = image_tag('post_music.jpg', class: 'card-img-top')
+    - else
+      = image_tag('post_liric.jpg', class: 'card-img-top')

@@ -1,0 +1,29 @@
+.row.justify-content-center.contact_contents
+  .col-lg-9
+    .text-center
+      h1.message_title
+        | Confirm
+        / i.fa.fa-paper-plane
+    .confirm_content.text-center.card.card-body.bg-light.p-4
+      = form_with(model: @contact, local: true) do |f|
+        = f.hidden_field :name
+        = f.hidden_field :email
+        = f.hidden_field :content
+        p
+          | お名前：
+          = @contact.name
+        p
+          | メールアドレス：
+          = @contact.email
+        p
+          | お問い合わせ内容：
+          = simple_format(h(@contact.content))
+
+        = f.submit '送信する', class:'btn btn-info w-50 mb-2'
+
+      = form_with(model: @contact, url: new_contact_path, method: :get ,local: true) do |f|
+        = f.hidden_field :name
+        = f.hidden_field :email
+        = f.hidden_field :content
+        .confirm_btn
+          = f.submit '戻る', name: 'back', class: 'btn btn-outline-secondary w-50'

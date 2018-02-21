@@ -2,11 +2,11 @@ div [id="#{count}"class="modal fade" tabindex="-1" role="dialog" aria-labelledby
   .modal-dialog.modal-lg[role="document"]
     .modal-content
       .modal-header.d-flex
-        h4#exampleModalLabel.modal-title
+        h4#exampleModalLabel.modal-title.mb-0
           = link_to user_path(post.user), class: 'avatar',
           :data => { :toggle=>'tooltip', :title=>'投稿者ページへ' } do
             = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'rounded-circle avatar_resize') : gravatar_for(post.user, 50)
-        p.user_name = post.user.name
+        p.user_name.mb-0.align-self-center.ml-2 = post.user.name
         button.close[data-dismiss="modal" aria-label="閉じる"]
           span[aria-hidden="true"]
             | ×
@@ -26,15 +26,20 @@ div [id="#{count}"class="modal fade" tabindex="-1" role="dialog" aria-labelledby
             = audio_tag(post.melody.url, controls: true)
         p.modal_content
           = simple_format(h(post.content))
-        .like_btn
+
+        .text-right.text-primary
+          small = simple_time(post.created_at)
+        .tag_list.text-right
+          = render 'shared/tag_list', tag_list: post.tag_list
+      .modal-footer
+        .like_btn.mr-auto
           i.fa.fa-star.star-color[data-toggle="tooltip", data-title="お気に入り数"]
             = post.likes.count.to_s
           i.fa.fa-eye.eye_icon.ml-2[data-toggle="tooltip", data-title="閲覧数"]
             = post.impressionist_count
           i.fa.fa-commenting.comment_icon.ml-2[data-toggle="tooltip", data-title="コメント数"]
             = post.comments.count
-          = link_to 'コメントする', post_path(post.id, anchor: :comment_create), class: 'ml-auto comment_link'
-      .modal-footer
-        = link_to '詳しく見る', post_path(post.id), class: 'btn btn-info'
+          = link_to 'コメントする', post_path(post.id, anchor: :comment_create), class: 'ml-auto comment_link' unless controller.controller_name == 'static_pages'
+        = link_to '詳しく見る', post_path(post.id), class: 'btn btn-info' unless controller.controller_name == 'static_pages'
         button.btn.btn-outline-secondary[type="button" data-dismiss="modal"]
           | 閉じる

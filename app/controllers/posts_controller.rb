@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   PER = 25
 
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(PER)
+    @posts = Post.page(params[:page]).per(PER)
     @most_viewed = Post.order('impressions_count DESC').take(1)
     @most_liked = Post.find(Like.group(:post_id).order('count(post_id) desc').limit(1).pluck(:post_id))
     @ranking = Post.order('impressions_count DESC').take(5)
