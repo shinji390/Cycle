@@ -6,7 +6,7 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
   #navbarNavDropdown.collapse.navbar-collapse
     ul.navbar-nav.ml-auto
       li.nav-item
-        = link_to user_signed_in? ? posts_path : top_path, class: "nav-link #{current_page(request.path)}" do
+        = link_to user_signed_in? ? posts_path : root_path, class: "nav-link #{current_page(request.path)}" do
           i.fa.fa-home.mr-1
           | ホーム
           span.sr-only (現位置)
@@ -34,10 +34,3 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
           .dropdown-menu.dropdown-menu-right aria-labelledby="navbarDropdownMenuLink"
             = link_to 'プロフィール編集',  edit_user_registration_path(current_user), class: 'dropdown-item di-1'
             = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item di-2'
-
-    / - if user_signed_in?
-    /   form.form-inline.my-2.my-lg-0
-    /     input.form-control.mr-sm-2 aria-label="検索..." placeholder="検索..." type="search" /
-    /     button.btn.btn-outline-success.my-2.my-sm-0 type="submit"  検索
-    /
-    / span[id="slide-line"]

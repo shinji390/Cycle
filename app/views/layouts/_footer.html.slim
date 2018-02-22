@@ -3,8 +3,8 @@
     .container
       .row
         .col-md-4
-          p.text-uppercase.mb-0.text-white
-            |このサイトについて
+          = link_to  about_path, class: 'text-white' do
+            | このサイトについて
             i.fa.fa-television.ml-1
 
         .col-md-4
