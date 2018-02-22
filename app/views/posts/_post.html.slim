@@ -1,38 +1,31 @@
-.page_nite.text-right
-  = render partial: 'shared/page', locals: { posts: posts }
 
+.card.text-center.mb-4.fadein.jo
 
-.card-columns.mt-2
-  - posts.each do |post|
-    .card.text-center.mb-4.fadein
+  .card-header
+    = render 'shared/user_avatar', post: post
 
-      .card-header
-        = render 'shared/user_avatar', post: post
+  / サムネイル
+  = render 'shared/thumbnail', post: post
 
-      / サムネイル
-      = render 'shared/thumbnail', post: post
+  .card-body
+    h3.like_wrap
+      |
+      = post.title
 
-      .card-body
-        h3.like_wrap
-          |
-          = post.title
+    / 音楽ファイル
+    -if post.melody.present?
+      p = audio_tag(post.melody.url, controls: true)
 
-        / 音楽ファイル
-        -if post.melody.present?
-          p = audio_tag(post.melody.url, controls: true)
+    p.contents = br(index_postcontent_slice(post))
 
-        p.contents = br(index_postcontent_slice(post))
+    .show_btn
+      a[href="/posts/#{post.id}", class='btn btn-outline-info my-1'] 詳しく見る
 
-        .show_btn
-          a[href="/posts/#{post.id}", class='btn btn-outline-info my-1'] 詳しく見る
+    .post_time.text-right.mt-2
+      small = simple_time(post.created_at)
 
-        .post_time.text-right.mt-2
-          small = simple_time(post.created_at)
+    .tag_list.text-right
+      = render 'shared/tag_list', tag_list: post.tag_list
 
-        .tag_list.text-right
-          = render 'shared/tag_list', tag_list: post.tag_list
-
-      .card-footer.text-white.likes
-        = render 'likes/like_btn', post: post
-
-= paginate posts
+  .card-footer.text-white.likes
+    = render 'likes/like_btn', post: post

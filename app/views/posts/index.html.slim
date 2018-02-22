@@ -17,6 +17,7 @@
     = link_to 'ホーム/', posts_path, class: 'm-0'
 
   .row
+
     .col-lg-4
       .card.text-white.bg-info.mb-3
         .card-header 閲覧数ランキング
@@ -28,6 +29,7 @@
               button type="button" class="btn btn-link modal_btn pt-0" data-toggle="modal" data-target="##{i}"
                 = post.title
             = render 'post_modal', post: post, count: i
+
     .col-lg-4
       .card.text-white.bg-warning.mb-3
         .card-header 人気の投稿
@@ -86,4 +88,10 @@
         = link_to '#Liric', post_liric_path, class: 'nav-link'
 
 .container-fluid.posts_content
-  = render "post", posts: @posts
+  .page_nite.text-right
+    = render partial: 'shared/page', locals: { posts: @posts }
+  .card-columns.mt-2
+    #contents
+      = render @posts
+#next.text-center
+  = link_to_next_page @posts, 'More Read', remote: true, id: 'next_link', class: 'btn-outline-primary btn'

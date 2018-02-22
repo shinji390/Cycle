@@ -15,6 +15,7 @@
 //= require rails-ujs
 //= require bootstrap/dist/js/bootstrap.js
 //= require data-confirm-modal
-// = require jquery-easing/dist/jquery.easing.1.3.umd.min.js
-// = require inview/jquery.inview.min.js
+//= require jquery-easing/dist/jquery.easing.1.3.umd.min.js
+//= require inview/jquery.inview.min.js
+//= require infinite-scroll/dist/infinite-scroll.pkgd.js
 //= require_tree .
