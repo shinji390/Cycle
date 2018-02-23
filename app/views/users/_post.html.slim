@@ -1,6 +1,5 @@
-.page_nite.text-right.my-2
+.page_nite.text-right.my-4
   = render partial: 'shared/page', locals: { posts: posts }
-= paginate posts
 
 - posts.each do |post|
   .card.mb-4

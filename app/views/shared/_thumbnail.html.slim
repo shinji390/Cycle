@@ -29,5 +29,6 @@
           class: 'embed-responsive-item card-img-top')
     - elsif post.melody.present?
       = image_tag('post_music.jpg', class: 'card-img-top')
+      p.img_tag melody
     - else
       = image_tag('post_liric.jpg', class: 'card-img-top')
