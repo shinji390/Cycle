@@ -1,3 +1,4 @@
 var idComment = <%= @comment_id %>;
 
-$('.other_comment[data-comment="'+idComment+'"]').parent().html("<%= j(render 'edit') %>");
+$('.other_comment[data-comment="'+idComment+'"]').html("<%= j(render 'edit') %>");
+$("#comment_create").remove();

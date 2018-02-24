@@ -11,7 +11,8 @@
         - if current_user == comment.user
           = render 'comments/edit_delete_btn', post: post, comment: comment
 
-p#comment_create
-  | コメントを投稿する
-  i.fa.fa-pencil
-= render 'comments/create', post: post
+#comment_create
+  p
+    | コメントを投稿する
+    i.fa.fa-pencil
+  = render 'comments/create', post: post

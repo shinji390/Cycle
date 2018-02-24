@@ -31,10 +31,9 @@ $(function() {
 jQuery(document).on('change', 'input[type=file]', function () {
   let file = ($(this).prop('files')[0].name);
   $('#file_name').text('| ' + file);
-
 });
 
-// TOPボタン
+// トップボタン
 $(function() {
     var topBtn = $('#to_top');
     topBtn.hide();
@@ -50,7 +49,7 @@ $(function() {
     topBtn.click(function () {
         $('body,html').animate({
             scrollTop: 0
-        }, 800);
+        }, 500);
         return false;
     });
 });

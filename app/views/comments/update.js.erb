@@ -1,3 +1,5 @@
 var idComment = <%= @comment_id %>;
 
 $('.other_comment[data-comment="'+idComment+'"]').parent().html("<%= j(render 'comments/comment_links', post: @post) %>");
+
+$("#comment_field").val('');

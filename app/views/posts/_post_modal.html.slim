@@ -11,7 +11,7 @@ div [id="#{count}"class="modal fade" tabindex="-1" role="dialog" aria-labelledby
           span[aria-hidden="true"]
             | ×
       .modal-body
-        h5.modal_title
+        h2.modal_title
           |
           = post.title
         .img_link
@@ -39,7 +39,6 @@ div [id="#{count}"class="modal fade" tabindex="-1" role="dialog" aria-labelledby
             = post.impressionist_count
           i.fa.fa-commenting.comment_icon.ml-2[data-toggle="tooltip", data-title="コメント数"]
             = post.comments.count
-          = link_to 'コメントする', post_path(post.id, anchor: :comment_create), class: 'ml-auto comment_link' unless controller.controller_name == 'static_pages'
         = link_to '詳しく見る', post_path(post.id), class: 'btn btn-info' unless controller.controller_name == 'static_pages'
         button.btn.btn-outline-secondary[type="button" data-dismiss="modal"]
           | 閉じる

@@ -4,15 +4,15 @@ class CommentsController < ApplicationController
   before_action :comment_id_params, only: [ :edit, :update ]
 
   def create
-    @comment = Comment.create(user_id: current_user.id,
-                              post_id: params[:post_id],
-                              text: params[:text],
-                              video: params[:video],
-                              url: params[:url],
-                              melody: params[:melody])
+    @comment = @post.comments.build(comment_params)
     respond_to do |format|
-      format.html { redirect_to posts_path }
-      format.js
+      if @comment.save
+        format.html { redirect_to post_path(@post) }
+        format.js { flash[:success] = 'コメントを投稿しました' }
+      else
+        format.html { redirect_to post_path(@post) }
+        format.js { flash[:danger] = 'エラーがあります' }
+      end
     end
   end
 
@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
     comment.destroy
     respond_to do |format|
       format.html { redirect_back(fallback_location: posts_path)}
-      format.js
+      format.js { flash[:danger] = 'コメントを削除しました' }
     end
   end
 
@@ -47,7 +47,7 @@ private
   end
 
   def comment_params
-    params.require(:comment).permit(:text, :video, :url, :melody)
+    params.require(:comment).permit(:user_id, :text, :video, :url, :melody)
   end
 
   def comment_id_params

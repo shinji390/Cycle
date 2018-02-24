@@ -1,10 +1,9 @@
-= render 'shared/errors'
 .comment_form
-  = form_with(url: post_comments_path(post_id: post.id, id: post.id), method: :post, remote: true) do |f|
+  = form_with(scope: :comment, url: post_comments_path(post_id: post.id, id: post.id), method: :post, remote: true) do |f|
     .form-group
       = f.label :text, '本文', class: 'check_icon'
       = f.text_area :text, class: 'form-control mb-4 comment_text', id: "comment_field"
-
+      = f.hidden_field :user_id, value: current_user.id
       p.check_icon
         | 投稿する曲
       ul#pills-tab.nav.nav-pills.mb-3 role="tablist"
@@ -30,4 +29,4 @@
           = f.label :url, 'youtubeの動画を投稿する(url)', class: 'mb-2'
           = f.text_field :url, class: 'form-control'
       .new_post_btn.text-center
-        = f.submit 'コメントする', class: 'btn btn-info w-100 my-4'
+        = f.submit 'コメント', class: 'btn btn-info w-100 my-4'
