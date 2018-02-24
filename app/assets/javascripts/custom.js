@@ -33,3 +33,24 @@ jQuery(document).on('change', 'input[type=file]', function () {
   $('#file_name').text('| ' + file);
 
 });
+
+// TOPボタン
+$(function() {
+    var topBtn = $('#to_top');
+    topBtn.hide();
+    //スクロールが200に達したらボタン表示
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 200) {
+            topBtn.fadeIn();
+        } else {
+            topBtn.fadeOut();
+        }
+    });
+    //スクロールしてトップ
+    topBtn.click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 800);
+        return false;
+    });
+});
