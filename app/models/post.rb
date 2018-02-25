@@ -11,6 +11,7 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 30 }
   validates :content, presence: true, length: { maximum: 3000 }
   validates :url, format: { with: /https:\/\/www.youtube.com\/watch\?v=(.+)/ }, allow_blank: true
+  validate :video_or_youtube
 
   default_scope -> { order(created_at: :desc) }
   # 音楽ファイル
@@ -21,6 +22,12 @@ class Post < ApplicationRecord
 # お気に入りしているか
   def liked_user?(user_id)
     likes.find_by(user_id: user_id)
+  end
+
+  def video_or_youtube
+    if video.present? && url.present?
+      errors[:base] << '動画はどちらかひとつでお願いします'
+    end
   end
 
 end

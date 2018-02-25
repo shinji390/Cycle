@@ -7,6 +7,11 @@
     .embed-responsive.embed-responsive-16by9.video_wrap
       = video_tag(post.video_url,:controls => true,
         class: 'embed-responsive-item card-img-top')
+  - elsif post.melody.present?
+    .audio_content.text-center
+      = audio_tag(post.melody.url, controls: true)
+      p.mb-0
+        small 音声ファイル
 
 - elsif controller.controller_name == 'users' && action_name == 'show' || controller.controller_name == 'users' && action_name == 'favorites' || controller.controller_name == 'post_pages'
   .img_link
@@ -17,6 +22,12 @@
       .embed-responsive.embed-responsive-16by9.video_wrap
         = video_tag(post.video_url,:controls => true,
           class: 'embed-responsive-item card-img-top')
+
+    - elsif post.melody.present?
+      .audio_content.text-center
+        = audio_tag(post.melody.url, controls: true)
+        p.mb-0
+          small 音声ファイル
 
 - else
   .img_link
@@ -29,6 +40,6 @@
           class: 'embed-responsive-item card-img-top')
     - elsif post.melody.present?
       = image_tag('post_music.jpg', class: 'card-img-top')
-      p.img_tag melody
+      = audio_tag(post.melody.url, controls: true)
     - else
       = image_tag('post_liric.jpg', class: 'card-img-top')

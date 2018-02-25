@@ -8,6 +8,9 @@
       class: 'embed-responsive-item')
 
 - elsif comment.melody.present?
-  p = audio_tag(comment.melody.url, :controls => true)
+  .audio_content.text-center
+    = audio_tag(comment.melody.url, controls: true)
+    p.mb-0
+      small 音声ファイル
 
 = simple_format(h(comment.text))

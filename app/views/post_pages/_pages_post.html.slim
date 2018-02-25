@@ -17,11 +17,10 @@
             .show_btn
               = link_to '詳しく見る', posts_path(post.user), class: 'btn btn-outline-info my-1'
 
-            .create_time.text-right.mt-2
-              small = simple_time(post.created_at)
-            .tag_list.text-right
+            .tag_list.text-right.mt-2
               = render 'shared/tag_list', tag_list: post.tag_list
-
+            .create_time.text-right
+              small = simple_time(post.created_at)
           .card-footer.text-white.likes
             = render 'likes/like_btn', post: post
 

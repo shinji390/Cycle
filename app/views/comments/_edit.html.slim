@@ -18,17 +18,21 @@
       #pills-tabContent.tab-content
         #pills-home.tab-pane.fade.show.active aria-labelledby="pills-home-tab" role="tabpanel"
           |
-          = f.label :melody, '音声ファイルを投稿する(mp3,wav)', class: 'mb-2'
-          = f.file_field :melody, class: 'form-control-file'
+          = f.label :melody, class: 'btn btn-success text-white badge-pill'
+            | 音声ファイルを選択【mp3,wav】
+            span#audio_file_name
+            = f.file_field :melody, id: 'comment_melody', style: 'display: none', accept: 'audio/mp3, audio/wav'
         #pills-profile.tab-pane.fade aria-labelledby="pills-profile-tab" role="tabpanel"
           |
-          = f.label :video, '動画ファイルを投稿する(mp4,MOV,wmv)', class: 'mb-2'
-          = f.file_field :video, class: 'form-control-file'
+          = f.label :video, class: 'btn btn-success text-white badge-pill'
+            | 動画ファイルを選択【mp4,MOV,wmv】
+            span#video_file_name
+            = f.file_field :video, id: 'comment_video', style: 'display: none', accept: 'video/*'
 
         #pills-url.tab-pane.fade aria-labelledby="pills-url-tab" role="tabpanel"
           |
           = f.label :url, 'youtubeの動画を投稿する(url)', class: 'mb-2'
-          = f.text_field :url, class: 'form-control'
+          = f.text_field :url, class: 'form-control', id: "youtube_field", placeholder: 'https://www.youtube.com/watch?v=~'
       .new_post_btn.text-center
         = f.submit '更新する', class: 'btn btn-info w-100 mb-2 mt-4'
         = link_to '戻る', :back, class: 'btn btn-outline-secondary w-100 '

@@ -7,6 +7,7 @@ class Comment < ApplicationRecord
   validates :user_id, presence: true
   validates :post_id, presence: true
 
+  default_scope -> { order(created_at: :asc) }
   # 音楽ファイル
   mount_uploader :melody, MusicUploader
   # 動画ファイル

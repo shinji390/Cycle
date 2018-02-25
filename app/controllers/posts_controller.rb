@@ -60,10 +60,10 @@ private
   end
 
   def tag_add(post)
-    if post.melody.present?
-      post.tag_list.add('Melody')
-    elsif post.video.present? || post.url.present?
+    if post.video.present? || post.url.present?
       post.tag_list.add('Video')
+    elsif post.melody.present?
+      post.tag_list.add('Melody')
     else
       post.tag_list.add('Lyric')
     end

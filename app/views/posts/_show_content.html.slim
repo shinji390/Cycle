@@ -1,5 +1,4 @@
-- if post.melody.present?
-  p = audio_tag(post.melody.url, :controls => true)
+= render 'posts/audio_content', post: post
 
 = simple_format(h(post.content))
 
@@ -27,16 +26,3 @@
         = post.comments.count
 
     a [href="#comment_create" class="ml-auto comment_link"] コメントする
-
-.post-meta.d-flex.justify-content-end
-  small
-    | 投稿時間：
-    = simple_time(post.created_at)
-  - if post.user == current_user
-    .post_user_btn.text-right
-      = link_to edit_post_path(post.id) , class:'mr-2' do
-        i.fa.fa-edit
-      = link_to post_path(post.id), class:'',
-      data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
-      title: "削除の確認", method: :delete do
-        i.fa.fa-trash

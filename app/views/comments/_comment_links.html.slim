@@ -10,9 +10,9 @@
         small = simple_time(comment.created_at)
         - if current_user == comment.user
           = render 'comments/edit_delete_btn', post: post, comment: comment
-
+hr
 #comment_create
-  p
+  p.comment_subttl
     | コメントを投稿する
     i.fa.fa-pencil
   = render 'comments/create', post: post

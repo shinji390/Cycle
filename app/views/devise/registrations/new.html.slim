@@ -24,8 +24,10 @@ h2.devise_title.text-muted
         = f.label :password_confirmation
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
 
-        = f.label :avatar, 'プロフィール画像'
-        = f.file_field :avatar, class: 'form-control-file'
+        = f.label :avatar, class: 'btn btn-success text-white ml-4 btn-sm badge-pill'
+          | プロフィール画像
+          span#avatar_file_name &nbsp;|&nbsp;ファイルを選択
+          = f.file_field :avatar, autocomplete: "off",style: 'display: none',id:'user_avatar', accept: 'image/jpg, image/png'
         = f.hidden_field :avatar_cache
 
         .actions.mt-4

@@ -19,8 +19,8 @@
   .row
 
     .col-lg-4
-      .card.text-white.bg-info.mb-3
-        .card-header 閲覧数ランキング
+      .card.bg-info.mb-3
+        .card-header.text-white 閲覧数ランキング
         .card-body.bg-light.py-1
           - @ranking.each.with_index(1) do |post, i|
             p.mb-1

@@ -5,13 +5,13 @@ div [id="#{count}"class="modal fade" tabindex="-1" role="dialog" aria-labelledby
         h4#exampleModalLabel.modal-title.mb-0
           = link_to user_path(post.user), class: 'avatar',
           :data => { :toggle=>'tooltip', :title=>'投稿者ページへ' } do
-            = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'rounded-circle avatar_resize') : gravatar_for(post.user, 50)
+            = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'tp-avatar rounded-circle avatar_resize') : gravatar_for(post.user, 50)
         p.user_name.mb-0.align-self-center.ml-2 = post.user.name
         button.close[data-dismiss="modal" aria-label="閉じる"]
           span[aria-hidden="true"]
             | ×
       .modal-body
-        h2.modal_title
+        h3.modal_title
           |
           = post.title
         .img_link
@@ -23,10 +23,12 @@ div [id="#{count}"class="modal fade" tabindex="-1" role="dialog" aria-labelledby
               = video_tag(post.video_url,:controls => true,
                 class: 'embed-responsive-item card-img-top')
           - elsif post.melody.present?
-            = audio_tag(post.melody.url, controls: true)
+            .audio_content.text-center
+              = audio_tag(post.melody.url, controls: true)
+  
         p.modal_content
           = simple_format(h(post.content))
-
+        = render 'posts/audio_content', post: post
         .text-right.text-primary
           small = simple_time(post.created_at)
         .tag_list.text-right

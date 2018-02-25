@@ -10,17 +10,15 @@ section#latest
         .col-lg-4.fadein
           .card.mb-4.box-shadow
             .card-header.d-flex
-              = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'rounded-circle avatar_resize') : gravatar_for(post.user, 50)
+              = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'tp-avatar rounded-circle avatar_resize') : gravatar_for(post.user, 50)
               p.user_name.mb-0.align-self-center.ml-2 = post.user.name
             = render 'shared/thumbnail', post: post
             .card-body
-              h3.like_wrap
+              h4.like_wrap
                 |
                 = post.title
 
-              / 音楽ファイル
-              -if post.melody.present?
-                p = audio_tag(post.melody.url, controls: true)
+              = render 'posts/audio_content', post: post
 
               / p.contents = br(index_postcontent_slice(post))
 

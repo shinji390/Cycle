@@ -1,16 +1,27 @@
 #flash_messages
 .jumbotron.jumbotron-fluid
   = render 'shared/pankuzu', post: @post
-
+  .post-meta.d-flex.justify-content-end
+    small
+      | 投稿時間：
+      = simple_time(@post.created_at)
+    - if @post.user == current_user
+      .post_user_btn.text-right
+        = link_to edit_post_path(@post.id) , class:'mr-2' do
+          i.fa.fa-edit
+        = link_to post_path(@post.id), class:'',
+        data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
+        title: "削除の確認", method: :delete do
+          i.fa.fa-trash
   .container
     .row.justify-content-start
-      .col-sm-2.text-center
+      .col-sm-2
         = render 'shared/user_avatar', post: @post
       .col-sm-8.post_title
         h2 = @post.title
 
       .col-lg-2.meta
-        .row.meta_content
+        .row.meta_content.mb-2
           .col-xs-6.border-add
             p.mb-0.mr-2.text-center
               | いいね数
@@ -19,6 +30,7 @@
             p.mb-0.ml-2.text-center
               | 閲覧数
               = @post.impressionist_count
+
 .container
   .row
     .col-lg-8
@@ -27,16 +39,15 @@
       .post-content
         = render 'show_content', post: @post
         hr
-
-      .comment_area
-        p
-          i.fa.fa-comments.comment_icon
-          | コメント一覧
+        .comment_area
+          p.comment_subttl
+            i.fa.fa-comments.comment_icon
+            | コメント一覧
+          p.com_nil = @post.comments.blank? ? 'コメントはまだありません' : ''
 
 
         div [id="comment-of-#{@post.id}"]
           = render 'comments/comment_links', post: @post
-      hr
     .col-lg-4
       .card
         .card-header.text-center.bg-success.text-white 投稿者のその他の投稿

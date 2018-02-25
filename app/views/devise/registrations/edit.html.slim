@@ -18,15 +18,12 @@
       = f.text_area :profile, class: 'form-control', placeholder: '150文字以内'
 
     .field
-      = current_user.avatar.present? ? image_tag(current_user.avatar.url, class: 'rounded-circle') : gravatar_for(current_user, 100)
-      = f.label :avatar, 'プロフィール画像', class: 'ml-2'
-      = f.file_field :avatar, autocomplete: "off", class: 'form-control-file mt-3'
+      = current_user.avatar.present? ? image_tag(current_user.avatar.url, class: 'rounded-circle') : gravatar_for(current_user,100)
+      = f.label :avatar, class: 'btn btn-success text-white badge-pill ml-4'
+        | プロフィール画像
+        span#avatar_file_name &nbsp;|&nbsp;ファイルを選択
+        = f.file_field :avatar, autocomplete: "off",style: 'display: none',id:'user_avatar', accept: 'image/jpg, image/png'
       = f.hidden_field :avatar_cache
-
-    / - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    /   div
-    /     | Currently waiting confirmation for:
-    /     = resource.unconfirmed_email
 
   .form-group.col-lg-5
 
@@ -43,13 +40,6 @@
     .field
       = f.label :password_confirmation, "パスワード変更確認"
       = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
-
-    / - if false
-    /   .field
-    /     = f.label :current_password
-    /     i
-    /       | (we need your current password to confirm your changes)
-    /     = f.password_field :current_password, autocomplete: "off", class: 'form-control'
 
     .actions
       = f.submit "プロフィール更新", class: 'btn btn-info w-100'

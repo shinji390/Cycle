@@ -1,0 +1,5 @@
+- if (post.video.present? || post.url.present?) && post.melody.present?
+  .audio_content.text-center
+    = audio_tag(post.melody.url, controls: true)
+    p.mb-0
+      small 音声ファイル

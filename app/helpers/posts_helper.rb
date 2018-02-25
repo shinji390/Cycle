@@ -12,8 +12,8 @@ module PostsHelper
 
   # インデックス文字数スライス
   def index_postcontent_slice(post)
-    new_content = post.content.slice(0..300)
-    if new_content.length > 300
+    new_content = post.content.slice(0..200)
+    if new_content.length > 199
       "#{new_content}...."
     else
       new_content

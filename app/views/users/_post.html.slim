@@ -3,31 +3,29 @@
 
 - posts.each do |post|
   .card.mb-4
-    = render 'shared/thumbnail', post: post
     .card-body
-      h4.card-title = post.title
+      = render 'shared/thumbnail', post: post
+      .d-flex.mb-2
+        h4.card-title = post.title
+        - if post.user == current_user
+          .post_user_btn.ml-auto
+            = link_to edit_post_path(post.id) , class:'mr-2' do
+              i.fa.fa-edit
+            = link_to post_path(post.id), class:'',
+            data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
+            title: "削除の確認", method: :delete do
+              i.fa.fa-trash
 
-      -if post.melody.present?
-        = audio_tag(post.melody.url, :controls => true)
-      |
       = simple_format(h(post.content))
-
-      .create_time.my-2
-        small = simple_time(post.created_at)
+      = render 'posts/audio_content', post: post
 
       .show_btn
-        = link_to '詳しく見る', post_path(post), class: 'btn btn-outline-info my-1'
+        = link_to '詳しく見る', post_path(post), class: 'btn btn-outline-info btn-sm my-1'
 
-      .tag_list.text-right
-        = render 'shared/tag_list', tag_list: post.tag_list
-      - if post.user == current_user
-        .post_user_btn.text-right
-          = link_to edit_post_path(post.id) , class:'mr-2' do
-            i.fa.fa-edit
-          = link_to post_path(post.id), class:'',
-          data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
-          title: "削除の確認", method: :delete do
-            i.fa.fa-trash
-
-    .card-footer.text-white.likes
+    .card-footer.likes
       = render 'likes/like_btn', post: post
+      .d-flex.justify-content-end
+        .create_time.mr-2
+          small = simple_time(post.created_at)
+        .tag_list
+          = render 'shared/tag_list', tag_list: post.tag_list

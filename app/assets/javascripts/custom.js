@@ -28,10 +28,26 @@ $(function() {
   });
 });
 
-jQuery(document).on('change', 'input[type=file]', function () {
+// audioファイル
+jQuery(document).on('change', '#post_melody, #comment_melody', function () {
   let file = ($(this).prop('files')[0].name);
-  $('#file_name').text('| ' + file);
+  $('#audio_file_name').text(' | ' + file);
 });
+
+// videoファイル
+jQuery(document).on('change', '#post_video, #commment_video', function () {
+  let file = ($(this).prop('files')[0].name);
+  $('#video_file_name').text(' | ' + file);
+});
+
+
+// imageファイル
+jQuery(document).on('change', '#user_avatar', function () {
+  let file = ($(this).prop('files')[0].name);
+  $('#avatar_file_name').text(' | ' + file);
+});
+
+
 
 // トップボタン
 $(function() {

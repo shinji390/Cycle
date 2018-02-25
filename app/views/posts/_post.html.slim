@@ -1,31 +1,27 @@
 
-.card.text-center.mb-4.fadein.jo
+.card.text-center.mb-4.fadein
 
   .card-header
     = render 'shared/user_avatar', post: post
 
   / サムネイル
   = render 'shared/thumbnail', post: post
+  / メロディ
 
   .card-body
     h3.like_wrap
       |
       = post.title
 
-    / 音楽ファイル
-    -if post.melody.present?
-      p = audio_tag(post.melody.url, controls: true)
-
     p.contents = br(index_postcontent_slice(post))
-
+    = render 'audio_content', post: post
     .show_btn
-      a[href="/posts/#{post.id}", class='btn btn-outline-info my-1'] 詳しく見る
+      = link_to '詳しく見る', post_path(post), class: 'btn btn-outline-info my-1'
 
-    .post_time.text-right.mt-2
-      small = simple_time(post.created_at)
-
-    .tag_list.text-right
+    .tag_list.text-right.mt-2
       = render 'shared/tag_list', tag_list: post.tag_list
+    .post_time.text-right
+      small = simple_time(post.created_at)
 
   .card-footer.text-white.likes
     = render 'likes/like_btn', post: post

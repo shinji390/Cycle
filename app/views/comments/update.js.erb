@@ -3,3 +3,10 @@ var idComment = <%= @comment_id %>;
 $('.other_comment[data-comment="'+idComment+'"]').parent().html("<%= j(render 'comments/comment_links', post: @post) %>");
 
 $("#comment_field").val('');
+$("#youtube_field").val('');
+
+$("#flash_messages").html("<div id='set_time' class='flash_class alert alert-success alert-dismissible' role='alert'><button class='close' data-dismiss='alert'>×</button>コメントを更新しました</div>");
+
+setTimeout(function(){
+  $('#set_time').fadeOut();
+}, 3000);
