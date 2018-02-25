@@ -1,11 +1,3 @@
-$(function() {
-$('[placeholder]').ahPlaceholder({
-    placeholderColor : 'silver',
-    placeholderAttr : 'placeholder',
-    likeApple : false
-    });
-});
-
 // falshフェイドアウト
 setTimeout(function(){
   $('#set_time').fadeOut();
@@ -67,5 +59,13 @@ $(function() {
             scrollTop: 0
         }, 500);
         return false;
+    });
+});
+
+$(function() {
+$('[placeholder]').ahPlaceholder({
+    placeholderColor : 'silver',
+    placeholderAttr : 'placeholder',
+    likeApple : false
     });
 });
