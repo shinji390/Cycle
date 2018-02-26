@@ -3,7 +3,7 @@
     = render 'shared/user_avatar', post: comment
 
   .other_comment[data-comment="#{comment.id}"]
-    .comment_text_box.rounded.p-3.mb-4.mt-3
+    .comment_text_box.rounded.p-3.my-4
       = render 'comments/comment_content', comment: comment
 
       .comment_btns.text-right

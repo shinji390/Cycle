@@ -71,7 +71,7 @@
         align-self: center
         margin: 0 0 0 1rem
 
-  .new-wrapper, .edit-wrapper,.create-wrapper
+  .new-wrapper, .edit-wrapper,.create-wrapper,.update-wrapper
     textarea
       height: 400px
 
@@ -153,6 +153,29 @@
         align-self: center
     .comment_text_box
       border: 1px solid #e8e9e8 !important
+      position: relative
+      &::before
+        content: ''
+        position: absolute
+        display: block
+        width: 0
+        height: 0
+        left: 10px
+        top: -15px
+        border-right: 15px solid transparent
+        border-bottom: 15px solid #e8e9e8
+        border-left: 15px solid transparent
+      &::after
+        content: ''
+        position: absolute
+        display: block
+        width: 0
+        height: 0
+        left: 10px
+        top: -12px
+        border-right: 15px solid transparent
+        border-bottom: 15px solid #ffffff
+        border-left: 15px solid transparent
     .like_btn
       justify-content: flex-start
   .top_avatar

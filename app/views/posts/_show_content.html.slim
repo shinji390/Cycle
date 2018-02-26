@@ -2,6 +2,8 @@
 
 = simple_format(h(post.content))
 
+.tag_list.text-right
+  = render 'shared/tag_list', tag_list: post.tag_list
 
 / いいねボタン
 .icon_group.my-2#top_page

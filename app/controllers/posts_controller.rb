@@ -38,9 +38,12 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update(post_params)
-    flash[:notice] = '編集しました'
-    redirect_to post_path(@post)
+    if @post.update(post_params)
+      flash[:notice] = '編集しました'
+      redirect_to post_path(@post)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

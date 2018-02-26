@@ -45,12 +45,12 @@
             | コメント一覧
           p.com_nil = @post.comments.blank? ? 'コメントはまだありません' : ''
 
-
         div [id="comment-of-#{@post.id}"]
           = render 'comments/comment_links', post: @post
+
     .col-lg-4
       .card
-        .card-header.text-center.bg-success.text-white 投稿者のその他の投稿
+        .card-header.bg-success.text-white その他の投稿
         .card-body
           .user_other_content
             - @post.user.posts.each do |post|
