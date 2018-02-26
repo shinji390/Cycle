@@ -12,6 +12,3 @@ p.user_name = post.user.name
       data: { confirm: "本当に削除してもよろしいですか？", cancel: "やめる", commit: "削除する"},
       title: "削除の確認", method: :delete do
         i.fa.fa-trash
-
-  - else
-    = render 'users/follow_form', user: post.user

@@ -20,6 +20,8 @@ ja:
         content: お問い合わせ内容
       comment:
         text: 本文
+      message:
+        body: メッセージ
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"

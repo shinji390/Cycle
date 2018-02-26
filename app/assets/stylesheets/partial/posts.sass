@@ -21,8 +21,8 @@
       margin-left: 0.5rem
     .post-meta
       position: absolute
-      bottom: 10px
-      right: 20px
+      bottom: -20px
+      right: 10px
   .top_container
     margin-top: 3rem
     margin-bottom: 3rem
@@ -114,6 +114,7 @@
       margin-bottom: 0
     .jumbotron
       padding: 2rem
+    .sh_lead
       position: relative
     .meta
       margin-top: 1rem
@@ -202,3 +203,10 @@
   @media screen and (min-width: 1300px)
     .card-columns
       column-count: 4
+  @media screen and (max-width: 575px)
+    .user_fl
+      display: flex
+      justify-content: flex-start
+      .f_b
+        margin-left: 1.5rem
+        align-self: center

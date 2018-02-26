@@ -1,7 +1,7 @@
-.row.justify-content-center
+.row.justify-content-center.wrap
   .col-lg-10
     - if @over_ten
-      = link_to '以前のメッセージ', '?m=all'
+      = link_to '以前のメッセージ', '?m=all', class: 'btn btn-outline-info'
 
     #message.ui.segment
       - @messages.each do |message|
@@ -10,6 +10,7 @@
 
     hr
     .message_area
+      #error_message
       = form_with(model: [@conversation, @message]) do |f|
         .field
           = f.text_area :body, class: "form-control", id: 'message_field', placeholder: 'メッセージを入力'

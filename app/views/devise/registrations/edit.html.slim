@@ -19,12 +19,15 @@
 
     .field
       = current_user.avatar.present? ? image_tag(current_user.avatar.url, class: 'rounded-circle') : gravatar_for(current_user,100)
-      = f.label :avatar, class: 'btn btn-success text-white badge-pill ml-4'
+      = f.label :avatar, class: 'btn btn-info text-white badge-pill ml-4 file_icon btn-sm'
         | プロフィール画像
         span#avatar_file_name &nbsp;|&nbsp;ファイルを選択
         = f.file_field :avatar, autocomplete: "off",style: 'display: none',id:'user_avatar', accept: 'image/jpg, image/png'
       = f.hidden_field :avatar_cache
-
+      br
+      - if @user.persisted? && @user.avatar?
+         = f.label :remove_avatar, '画像を削除', class: 'mt-1'
+         = f.check_box :remove_avatar
   .form-group.col-lg-5
 
     .field

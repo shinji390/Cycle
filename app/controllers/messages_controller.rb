@@ -26,13 +26,14 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.build(message_params)
-    if @message.save
-      respond_to do |format|
+    respond_to do |format|
+      if @message.save
+        format.html { redirect_to conversation_messages_path(@conversation) }
         format.js { render :templete => "messages/message" }
+      else
+        format.html { redirect_to conversation_messages_path(@conversation) }
+        format.js { render partial: "messages/error" }
       end
-      # redirect_to conversation_messages_path(@conversation)
-    else
-      render 'index'
     end
   end
 

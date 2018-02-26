@@ -52,7 +52,7 @@ private
   end
 
   def comment_params
-    params.require(:comment).permit(:user_id, :text, :video, :url, :melody)
+    params.require(:comment).permit(:user_id, :text, :video, :url, :melody, :remove_melody, :remove_video)
   end
 
   def comment_id_params
