@@ -7,11 +7,12 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     respond_to do |format|
       if @comment.save
+        flash[:success] = 'コメントを投稿しました'
         format.html { redirect_to post_path(@post) }
-        format.js { flash[:success] = 'コメントを投稿しました' }
+        format.js
       else
         format.html { redirect_to post_path(@post) }
-        format.js { flash[:danger] = 'エラーがあります' }
+        format.js { render partial: 'comments/error'}
       end
     end
   end
@@ -24,10 +25,14 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment.update(comment_params)
     respond_to do |format|
-      format.html
-      format.js { @comment_id = @comment.id }
+      if @comment.update(comment_params)
+        format.html { redirect_to post_path(@post) }
+        format.js { @comment_id = @comment.id }
+      else
+        format.html { redirect_to post_path(@post) }
+        format.js { render partial: 'comments/error'}
+      end
     end
   end
 

@@ -14,8 +14,6 @@
     #pills-tabContent.tab-content
       #pills-home.tab-pane.fade.show.active aria-labelledby="pills-home-tab" role="tabpanel"
         |
-        / = f.label :melody,'音声ファイルを選択【mp3,wav】'
-        / = f.file_field :melody, id: 'post_melody', class: 'form-control-file',accept: 'audio/mp3, audio/wav'
         = f.label :melody, class: 'btn btn-success text-white badge-pill'
           | 音声ファイルを選択【mp3,wav】
           span#audio_file_name
@@ -23,8 +21,6 @@
 
       #pills-profile.tab-pane.fade aria-labelledby="pills-profile-tab" role="tabpanel"
         |
-        / = f.label :video, '動画ファイルを選択【mp4,MOV,wmv】'
-        / = f.file_field :video, id: 'post_video', class: 'form-control-file',accept: 'video/*'
         = f.label :video, class: 'btn btn-success text-white badge-pill'
           | 動画ファイルを選択【mp4,MOV,wmv】
           span#video_file_name

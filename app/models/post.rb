@@ -23,7 +23,8 @@ class Post < ApplicationRecord
   def liked_user?(user_id)
     likes.find_by(user_id: user_id)
   end
-
+  
+# 動画ファイルvalidate
   def video_or_youtube
     if video.present? && url.present?
       errors[:base] << '動画はどちらかひとつでお願いします'

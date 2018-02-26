@@ -1,4 +1,4 @@
-= render 'shared/errors'
+#error_message.my-2
 .other_comment [data-comment="#{@comment_id}"]
   = form_with(model: @comment, url: post_comment_path, remote: true, method: :patch) do |f|
     .form-group

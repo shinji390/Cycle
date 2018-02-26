@@ -1,3 +1,4 @@
+#error_message.my-2
 .comment_form
   = form_with(scope: :comment, url: post_comments_path(post_id: post.id, id: post.id), method: :post, remote: true) do |f|
     .form-group
@@ -5,7 +6,7 @@
       = f.text_area :text, class: 'form-control mb-4 comment_text', id: "comment_field"
       = f.hidden_field :user_id, value: current_user.id
       p.check_icon
-        | 投稿する曲
+        | 投稿する曲(動画とYoutubeはいずれかひとつ)
       ul#pills-tab.nav.nav-pills.mb-3 role="tablist"
         li.nav-item
           a#pills-home-tab.nav-link.active aria-controls="pills-home" aria-selected="true" data-toggle="pill" href="#pills-home" role="tab" 音楽ファイルの投稿
