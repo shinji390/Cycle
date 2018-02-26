@@ -5,7 +5,7 @@ class MusicUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   # include CarrierWave::Audio
   # include CarrierWave::FFMPEG
-  #
+    include Cloudinary::CarrierWave
   # require 'streamio-ffmpeg'
   # Choose what kind of storage to use for this uploader:
   storage :file
