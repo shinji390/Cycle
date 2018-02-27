@@ -25,7 +25,8 @@ div [id="#{count}"class="modal fade" tabindex="-1" role="dialog" aria-labelledby
           - elsif post.melody.present?
             .audio_content.text-center
               = audio_tag(post.melody.url, controls: true)
-  
+              p.mb-0
+                small 音声ファイル
         p.modal_content
           = simple_format(h(post.content))
         = render 'posts/audio_content', post: post
