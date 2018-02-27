@@ -5,7 +5,7 @@
   .card.mb-4
     .card-body
       = render 'shared/thumbnail', post: post
-      .d-flex.mb-2
+      .d-flex.my-2
         h4.card-title = post.title
         - if post.user == current_user
           .post_user_btn.ml-auto

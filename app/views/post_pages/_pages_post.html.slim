@@ -7,13 +7,8 @@
           = render 'shared/thumbnail', post: post
           .card-body
             h4.card-title.mb-4 = post.title
-
-            p.card-text
-              -if post.melody.present?
-                = audio_tag(post.melody.url, :controls => true)
-              |
-              = simple_format(h(post.content))
-
+            = simple_format(h(post.content))
+            = render 'posts/audio_content', post: post
             .show_btn
               = link_to '詳しく見る', posts_path(post.user), class: 'btn btn-outline-info my-1'
 
