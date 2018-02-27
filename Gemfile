@@ -7,12 +7,11 @@ end
 
 gem 'acts-as-taggable-on'
 gem 'carrierwave'
-gem 'carrierwave-audio'
-gem 'cloudinary'
 gem 'data-confirm-modal'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'faker'
+gem 'fog'
 gem 'gretel'
 gem 'html2slim'
 gem 'impressionist', git: 'https://github.com/charlotte-ruby/impressionist.git'

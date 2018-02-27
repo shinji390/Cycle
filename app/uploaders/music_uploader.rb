@@ -5,11 +5,10 @@ class MusicUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   # include CarrierWave::Audio
   # include CarrierWave::FFMPEG
-    include Cloudinary::CarrierWave
   # require 'streamio-ffmpeg'
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   # version :mp3 do
   #   process :convert => [{output_format: :mp3}]
@@ -39,9 +38,9 @@ class MusicUploader < CarrierWave::Uploader::Base
   #     File.rename(current_path + ".jpg", current_path)
   #     File.delete(tmpfile)
   #   end
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  # def store_dir
+  #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
