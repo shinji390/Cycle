@@ -24,13 +24,13 @@ h2.devise_title.text-muted
         = f.label :password_confirmation
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
 
-        = f.label :avatar, class: 'btn btn-info text-white ml-4 btn-sm badge-pill file_icon'
+        = f.label :avatar, class: 'btn btn-info text-white ml-4 btn-sm badge-pill file_icon mt-2'
           | プロフィール画像
           span#avatar_file_name &nbsp;|&nbsp;ファイルを選択
           = f.file_field :avatar, autocomplete: "off",style: 'display: none',id:'user_avatar', accept: 'image/jpg, image/png'
         = f.hidden_field :avatar_cache
 
-        .actions.mt-4
+        .actions.mt-2
           = f.submit "アカウントを作成する", class: 'btn btn-success w-100'
 
     = render "devise/shared/links"
