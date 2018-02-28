@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   layout 'index_layout', only: [ :index, :show ]
 
   impressionist actions: [:show]
-  PER = 25
+  PER = 24
 
   def index
     @posts = Post.page(params[:page]).per(PER)
