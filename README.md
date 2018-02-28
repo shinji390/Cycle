@@ -9,4 +9,4 @@
   * Database: Postgresql
   * Bootstrap 4.0.0-beta.2
 ---
-まだまだ作成途中です。
+https://floating-brushlands-74764.herokuapp.com/
