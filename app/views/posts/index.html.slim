@@ -3,7 +3,7 @@
     .container
       .row.justify-content-start
         .col-lg-7
-          h1.text-white 音楽の循環~Cycle
+          h1.text-white 音楽の循環 <span class="cycle">-Cycle-</span>
           p.text-white
             | このサイトは、音楽のアイデアの出し合いをテーマにしてます。<br>
               投稿するのは、たった1行の歌詞でも、たった5秒のギターリフ・音楽の感想でも構いません。<br>
@@ -41,7 +41,7 @@
                 :data => { :toggle=>'tooltip', :title=>'投稿者ページへ' } do
                   = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'rounded-circle top_avatar') : gravatar_for(post.user, 50)
                 p.user_name.mb-0 = post.user.name
-              .col-xs-8
+              .col-xs-8.mt-1
                 = link_to "#{post.title}", post_path(post), class: 'link_text ml-2'
             hr
             .post_meta.d-flex
@@ -63,7 +63,7 @@
                 :data => { :toggle=>'tooltip', :title=>'投稿者ページへ' } do
                   = post.user.avatar.present? ? image_tag(post.user.avatar.url, class: 'rounded-circle top_avatar') : gravatar_for(post.user, 50)
                 p.user_name.mb-0 = post.user.name
-              .col-xs-8
+              .col-xs-8.mt-1
                 = link_to "#{post.title}", post_path(post), class: 'link_text ml-2'
             hr
             .post_meta.d-flex

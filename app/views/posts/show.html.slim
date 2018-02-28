@@ -58,7 +58,7 @@
         .card-header.bg-secondary.text-white その他の投稿
         .card-body
           .user_other_content
-            - @post.user.posts.each do |post|
+            - @post.user.posts.limit(5).each do |post|
               .linen_up
                 button type="button" class="btn btn-link modal_btn pt-0" data-toggle="modal" data-target="##{post.id}"
                   = post.title
