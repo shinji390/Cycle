@@ -21,7 +21,8 @@
         .avt
           = render 'shared/user_avatar', post: @post
         .f_b
-          = render 'users/follow_form', user: @post.user
+          - unless @post.user.id == current_user.id
+            = render 'users/follow_form', user: @post.user
       .col-sm-10.col-md-7.post_title
         h2 = @post.title
 
