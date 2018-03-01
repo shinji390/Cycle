@@ -1,8 +1,7 @@
 #flash_messages
 .jumbotron.jumbotron-fluid
-  = render 'shared/pankuzu', post: @post
-
   .container.sh_lead
+    = render 'shared/pankuzu', post: @post
     .post-meta.d-flex.justify-content-end
       small
         | 投稿時間：
@@ -42,7 +41,7 @@
     .col-lg-8
       .thumbnail
         = render 'shared/thumbnail', post: @post
-      .post-content
+      .post-content.mt-3
         = render 'show_content', post: @post
         hr
         .comment_area
