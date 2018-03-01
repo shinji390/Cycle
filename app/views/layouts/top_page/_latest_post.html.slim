@@ -20,8 +20,6 @@ section#latest
 
               = render 'posts/audio_content', post: post
 
-              / p.contents = br(index_postcontent_slice(post))
-
               button type="button" class="btn btn-success modal_btn" data-toggle="modal" data-target="##{post.id}"
                 | view
               = render 'posts/post_modal', post: post, count: post.id

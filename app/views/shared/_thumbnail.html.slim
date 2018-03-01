@@ -1,19 +1,4 @@
-- if controller.controller_name == 'posts' && action_name == 'show'
-
-  - if post.url?
-    .embed-responsive.embed-responsive-4by3
-      = thumbnail_youtube(post)
-  - elsif post.video?
-    .embed-responsive.embed-responsive-16by9.video_wrap
-      = video_tag(post.video_url,:controls => true,
-        class: 'embed-responsive-item card-img-top')
-  - elsif post.melody?
-    .audio_content.text-center
-      = audio_tag(post.melody.url, controls: true)
-      p.mb-0
-        small 音声ファイル
-
-- elsif (controller.controller_name == 'users' && action_name == 'show') || (controller.controller_name == 'users' && action_name == 'favorites') || (controller.controller_name == 'post_pages')
+- unless (controller.controller_name == 'posts' && action_name == 'index') || (controller.controller_name == 'static_pages' && action_name == 'index')
   .img_link
     - if post.url?
       .embed-responsive.embed-responsive-16by9
@@ -33,7 +18,7 @@
   .img_link
     - if post.url?
       .embed-responsive.embed-responsive-4by3
-        = thumbnail_youtu
+        = thumbnail_youtube(post)
     - elsif post.video?
       .embed-responsive.embed-responsive-16by9.video_wrap
         = video_tag(post.video_url,:controls => true,
