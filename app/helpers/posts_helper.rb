@@ -32,16 +32,6 @@ module PostsHelper
         allowfullscreen: true
       )
       content_tag(:div, iframe, class: 'card-img-top embed-responsive-item')
-    elsif post.text.match(/https:\/\/www.youtube.com\/watch\?v=(.+)/)
-      new_url = post.url.gsub('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
-      iframe = content_tag(
-        :iframe,
-        '',
-        src: "#{new_url}",
-        frameborder: 0,
-        allowfullscreen: true
-      )
-      content_tag(:div, iframe, class: 'card-img-top embed-responsive-item')
     end
   end
 

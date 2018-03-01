@@ -1,13 +1,13 @@
 - if controller.controller_name == 'posts' && action_name == 'show'
 
-  - if post.url.present?
+  - if post.url?
     .embed-responsive.embed-responsive-4by3
       = thumbnail_youtube(post)
-  - elsif post.video.present?
+  - elsif post.video?
     .embed-responsive.embed-responsive-16by9.video_wrap
       = video_tag(post.video_url,:controls => true,
         class: 'embed-responsive-item card-img-top')
-  - elsif post.melody.present?
+  - elsif post.melody?
     .audio_content.text-center
       = audio_tag(post.melody.url, controls: true)
       p.mb-0
@@ -15,15 +15,15 @@
 
 - elsif (controller.controller_name == 'users' && action_name == 'show') || (controller.controller_name == 'users' && action_name == 'favorites') || (controller.controller_name == 'post_pages')
   .img_link
-    - if post.url.present?
+    - if post.url?
       .embed-responsive.embed-responsive-16by9
         = thumbnail_youtube(post)
-    - elsif post.video.present?
+    - elsif post.video?
       .embed-responsive.embed-responsive-16by9.video_wrap
         = video_tag(post.video_url,:controls => true,
           class: 'embed-responsive-item card-img-top')
 
-    - elsif post.melody.present?
+    - elsif post.melody?
       .audio_content.text-center.mb-0.post_pages_melody
         = audio_tag(post.melody.url, controls: true)
         p.mb-0
@@ -31,14 +31,14 @@
 
 - else
   .img_link
-    - if post.url.present?
+    - if post.url?
       .embed-responsive.embed-responsive-4by3
-        = thumbnail_youtube(post)
-    - elsif post.video.present?
+        = thumbnail_youtu
+    - elsif post.video?
       .embed-responsive.embed-responsive-16by9.video_wrap
         = video_tag(post.video_url,:controls => true,
           class: 'embed-responsive-item card-img-top')
-    - elsif post.melody.present?
+    - elsif post.melody?
       = image_tag('post_music.jpg', class: 'card-img-top')
       = audio_tag(post.melody.url, controls: true)
     - else

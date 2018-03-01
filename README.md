@@ -8,5 +8,6 @@
   * Rails version: 5.1.1
   * Database: Postgresql
   * Bootstrap 4.0.0-beta.2
+  * Slim, Sass
 ---
 https://floating-brushlands-74764.herokuapp.com/
