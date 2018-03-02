@@ -1,7 +1,7 @@
 .follow_avatar.d-flex
   .avatar
     = link_to user_path(user), class: 'avatar',
-    :data => { :toggle=>'tooltip', :title=>'投稿者ページへ' } do
+    :data => { :toggle=>'tooltip', :title=>'プロフィールページへ' } do
       = user.avatar.present? ? image_tag(user.avatar.url, class: 'rounded-circle avatar_resize') : gravatar_for(user, 50)
     p.my-1 = user.name
     = render 'users/follow_form', user: user
