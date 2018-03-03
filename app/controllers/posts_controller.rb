@@ -49,7 +49,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     flash[:alert] = '削除しました'
-    redirect_to posts_path
+    destroy_redirect
   end
 
 private
