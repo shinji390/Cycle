@@ -34,5 +34,4 @@ module PostsHelper
       content_tag(:div, iframe, class: 'card-img-top embed-responsive-item')
     end
   end
-
 end
