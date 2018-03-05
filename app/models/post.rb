@@ -14,21 +14,37 @@ class Post < ApplicationRecord
   validate :video_or_youtube
 
   default_scope -> { order(created_at: :desc) }
+
   # 音楽ファイル
   mount_uploader :melody, MusicUploader
   # 動画ファイル
   mount_uploader :video, VideoUploader
 
-# お気に入りしているか
+  # お気に入りしているか
   def liked_user?(user_id)
     likes.find_by(user_id: user_id)
   end
-  
-# 動画ファイルvalidate
+
+  # 動画ファイルvalidate
   def video_or_youtube
-    if video.present? && url.present?
+    if video? && url?
       errors[:base] << '動画はどちらかひとつでお願いします'
     end
   end
 
+  # 閲覧数トップ
+  def self.most_viewed
+    order('impressions_count DESC').take(1)
+  end
+
+  # いいねトップ
+  def self.most_liked
+    find(Like.group(:post_id).order('count(post_id) desc').limit(1).pluck(:post_id))
+  end
+
+  # viewランキング
+  def self.view_ranking
+    order('impressions_count DESC').take(5)
+  end
+  
 end
