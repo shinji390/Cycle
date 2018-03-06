@@ -47,4 +47,16 @@ class Post < ApplicationRecord
     order('impressions_count DESC').take(5)
   end
 
+  # タグ
+  def self.melody_tag
+    tagged_with('Melody')
+  end
+
+  def self.video_tag
+    tagged_with('Video')
+  end
+
+  def self.liric_tag
+    tagged_with('Liric')
+  end
 end

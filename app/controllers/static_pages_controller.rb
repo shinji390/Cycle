@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 
-  layout 'devise', only:[:index]
+  layout 'devise', only: %i[index]
   def index
     @posts = Post.first(3)
   end
