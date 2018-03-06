@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :post_id_params, only: [ :create, :edit, :update, :destroy ]
-  before_action :comment_id_params, only: [ :edit, :update ]
+  before_action :post_id_params, only: %i[create edit update destroy]
+  before_action :comment_id_params, only: %i[edit update]
 
   def create
     @comment = @post.comments.build(comment_params)
@@ -45,14 +45,15 @@ class CommentsController < ApplicationController
     end
   end
 
-private
+  private
 
   def post_id_params
     @post = Post.find(params[:post_id])
   end
 
   def comment_params
-    params.require(:comment).permit(:user_id, :text, :video, :url, :melody, :remove_melody, :remove_video)
+    params.require(:comment).permit(:user_id, :text, :video, :url, :melody,
+                                    :remove_melody, :remove_video)
   end
 
   def comment_id_params
