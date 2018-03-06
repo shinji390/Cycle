@@ -5,27 +5,23 @@ class UsersController < ApplicationController
 
   def index
     users = User.all
-    @users = post_order(users)
+    @users = pagination(users)
   end
 
   def show
-    posts = @user.posts
-    @posts = post_order(posts)
+    @posts = pagination(@user.posts)
   end
 
   def favorites
-    posts = @user.like_posts
-    @posts = post_order(posts)
+    @posts = pagination(@user.like_posts)
   end
 
   def followers
-    users = @user.followers
-    @users = post_order(users)
+    @users = pagination(@user.followers)
   end
 
   def followed
-    users = @user.following
-    @users = post_order(users)
+    @users = pagination(@user.following)
   end
 
   private
@@ -33,7 +29,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    def post_order(post)
-      post.order(created_at: :desc).page(params[:page]).per(PER)
+    def pagination(post)
+      post.page(params[:page]).per(PER)
     end
 end
