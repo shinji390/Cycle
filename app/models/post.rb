@@ -46,5 +46,5 @@ class Post < ApplicationRecord
   def self.view_ranking
     order('impressions_count DESC').take(5)
   end
-  
+
 end
