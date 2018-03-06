@@ -12,12 +12,7 @@ module PostsHelper
 
   # インデックス文字数スライス
   def index_postcontent_slice(post)
-    new_content = post.content.slice(0..120)
-    if new_content.length > 119
-      "#{new_content}...."
-    else
-      new_content
-    end
+    truncate(post.content, length: 120)
   end
 
   # youtube
