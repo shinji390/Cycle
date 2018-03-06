@@ -1,22 +1,17 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
-  before_action :post_id_params, only: [ :create, :destroy ]
+  before_action :post_id_params, only: %i[create destroy]
+  respond_to :js
 
   def create
     @like = Like.create(user_id: current_user.id, post_id: params[:post_id])
-    respond_to do |format|
-      format.html { redirect_back(fallback_location: posts_path)}
-      format.js
-    end
+    respond_with
   end
 
   def destroy
     like = Like.find_by(user_id: current_user.id, post_id: params[:post_id])
     like.destroy
-    respond_to do |format|
-      format.html { redirect_back(fallback_location: posts_path)}
-      format.js
-    end
+    respond_with
   end
 
   private
