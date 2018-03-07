@@ -11,7 +11,7 @@
       |
       = post.title
 
-    p.contents = br(index_postcontent_slice(post))
+    p.contents = index_postcontent_slice(post).squish
     = render 'audio_content', post: post
     .show_btn
       = link_to '詳しく見る', post_path(post), class: 'btn btn-outline-info my-1'
