@@ -8,12 +8,6 @@ Rails.application.routes.draw do
   :omniauth_callbacks => "omniauth_callbacks"
 }
 
-  # ルート分岐
-  # constraints ->  request { request.session[:user_id].present? } do
-  #   # ログインしてる時のパス
-  #   root to: "posts#index"
-  # end
-  # ログインしてない時のパス
   root to: 'static_pages#index'
 
   # static_pages
