@@ -34,9 +34,9 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.tag_list.clear
-    @post = current_user.posts.build(post_params)
-    tag_add(@post)
+    # @post.tag_list.clear
+    # @post = current_user.posts.build(post_params)
+    # tag_add(@post)
     if @post.update(post_params)
       flash[:notice] = '編集しました'
       redirect_to post_path(@post)
