@@ -8,8 +8,6 @@ class Comment < ApplicationRecord
   validates :post_id, presence: true
   validate :video_or_youtube
 
-  default_scope -> { order(created_at: :asc) }
-
   # 音楽ファイル
   mount_uploader :melody, MusicUploader
   # 動画ファイル
