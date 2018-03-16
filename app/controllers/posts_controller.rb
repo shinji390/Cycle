@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :post_id_params, only: %i[show edit update destroy]
+  before_action :correct_user, only: %i[edit update]
   layout 'index_layout', only: %i[index show]
+  include UsersHelper
   impressionist actions: %i[show]
 
   def index
@@ -72,5 +74,9 @@ private
     end
   end
 
+  def correct_user
+    @user = User.find(Post.find(params[:id]).user_id)
+    redirect_to posts_path unless current_user?(@user)
+  end
 
 end
