@@ -13,7 +13,6 @@ class Post < ApplicationRecord
   validates :url, format: { with: /https:\/\/www.youtube.com\/watch\?v=(.+)/ }, allow_blank: true
   validate :video_or_youtube
 
-  default_scope -> { order(created_at: :desc) }
 
   # 音楽ファイル
   mount_uploader :melody, MusicUploader
@@ -49,14 +48,14 @@ class Post < ApplicationRecord
 
   # タグ
   def self.melody_tag
-    tagged_with('Melody')
+    order(created_at: :desc).tagged_with('Melody')
   end
 
   def self.video_tag
-    tagged_with('Video')
+    order(created_at: :desc).tagged_with('Video')
   end
 
   def self.liric_tag
-    tagged_with('Liric')
+    order(created_at: :desc).tagged_with('Liric')
   end
 end

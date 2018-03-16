@@ -30,6 +30,6 @@ class UsersController < ApplicationController
     end
 
     def pagination(post)
-      post.page(params[:page]).per(PER)
+      post.order(created_at: :desc).page(params[:page]).per(PER)
     end
 end

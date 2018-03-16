@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   impressionist actions: %i[show]
 
   def index
-    @posts = Post.page(params[:page]).per(24)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(24)
     @most_viewed = Post.most_viewed
     @most_liked = Post.most_liked
     @ranking = Post.view_ranking
