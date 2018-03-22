@@ -55,7 +55,7 @@ class Post < ApplicationRecord
     order(created_at: :desc).tagged_with('Video')
   end
 
-  def self.liric_tag
-    order(created_at: :desc).tagged_with('Liric')
+  def self.lyric_tag
+    order(created_at: :desc).tagged_with('Lyric')
   end
 end

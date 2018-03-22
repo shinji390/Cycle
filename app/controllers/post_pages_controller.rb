@@ -11,7 +11,7 @@ class PostPagesController < ApplicationController
     @posts = Post.video_tag.page(params[:page]).per(PER)
   end
 
-  def liric
-    @posts = Post.liric_tag.page(params[:page]).per(PER)
+  def lyric
+    @posts = Post.lyric_tag.page(params[:page]).per(PER)
   end
 end

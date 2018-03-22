@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   # カテゴリーページ
   get '/post/music', to: 'post_pages#music'
   get '/post/video', to: 'post_pages#video'
-  get '/post/liric', to: 'post_pages#liric'
+  get '/post/lyric', to: 'post_pages#lyric'
 
   # フォロー
   resources :relationships, only: [ :create, :destroy ]
