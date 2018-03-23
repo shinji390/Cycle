@@ -10,7 +10,7 @@
         .card.mb-4
           .card-body
             = render 'shared/thumbnail', post: post
-            h4.card-title = post.title
+            h4.card-title.mt-2 = post.title
 
             = render 'posts/audio_content', post: post
             = simple_format(h(post.content))
