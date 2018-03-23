@@ -12,7 +12,7 @@ module PostsHelper
 
   # インデックス文字数スライス
   def index_postcontent_slice(post)
-    truncate(post.content, length: 120)
+    truncate(post.content, length: 120, escape: false)
   end
 
   # youtube
