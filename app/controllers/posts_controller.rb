@@ -37,7 +37,6 @@ class PostsController < ApplicationController
   def update
     @post.tag_list.clear
     if @post.update(post_params)
-      tag_add(@post)
       flash[:notice] = '編集しました'
       redirect_to post_path(@post)
     else
