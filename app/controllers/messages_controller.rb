@@ -29,10 +29,10 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         format.html { redirect_to conversation_messages_path(@conversation) }
-        format.js { render :templete => "messages/message" }
+        format.js
       else
         format.html { redirect_to conversation_messages_path(@conversation) }
-        format.js { render partial: "messages/error" }
+        format.js { render partial: 'messages/error' }
       end
     end
   end
