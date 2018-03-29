@@ -13,6 +13,7 @@ class Post < ApplicationRecord
   validates :url, format: { with: /https:\/\/www.youtube.com\/watch\?v=(.+)/ }, allow_blank: true
   validate :video_or_youtube
 
+  before_update :tag_update
 
   # 音楽ファイル
   mount_uploader :melody, MusicUploader
@@ -57,5 +58,16 @@ class Post < ApplicationRecord
 
   def self.lyric_tag
     order(created_at: :desc).tagged_with('Lyric')
+  end
+
+  # 編集時タグ変更
+  def tag_update
+    if self.video? || self.url?
+      self.tag_list.add('Video')
+    elsif self.melody?
+      self.tag_list.add('Melody')
+    else
+      self.tag_list.add('Lyric')
+    end
   end
 end
