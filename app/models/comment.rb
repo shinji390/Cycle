@@ -8,6 +8,10 @@ class Comment < ApplicationRecord
   validates :post_id, presence: true
   validate :video_or_youtube
 
+  before_update do
+    self.updated = true
+  end
+
   # 音楽ファイル
   mount_uploader :melody, MusicUploader
   # 動画ファイル

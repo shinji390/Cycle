@@ -7,7 +7,7 @@
       = render 'comments/comment_content', comment: comment
 
       .comment_btns.text-right
-        small = simple_time(comment.created_at)
+        = update?(comment)
         - if current_user == comment.user
           = render 'comments/edit_delete_btn', post: post, comment: comment
 hr

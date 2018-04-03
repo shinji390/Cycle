@@ -10,6 +10,15 @@ module PostsHelper
     time.strftime("%Y-%m-%d  %H:%M  ")
   end
 
+  # 編集済みか
+  def update?(post)
+    if post.updated
+      content_tag(:small, "#{simple_time(post.updated_at)}に編集")
+    else
+      content_tag(:small, simple_time(post.created_at))
+    end
+  end
+
   # インデックス文字数スライス
   def index_postcontent_slice(post)
     truncate(post.content, length: 120, escape: false)
