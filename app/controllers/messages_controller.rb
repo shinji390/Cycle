@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end
@@ -28,10 +29,8 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.build(message_params)
     respond_to do |format|
       if @message.save
-        format.html { redirect_to conversation_messages_path(@conversation) }
         format.js
       else
-        format.html { redirect_to conversation_messages_path(@conversation) }
         format.js { render partial: 'messages/error' }
       end
     end
